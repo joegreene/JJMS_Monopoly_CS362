@@ -6,3 +6,8 @@ List of websites we'll use:
 - www.seenowdo.com
 - http://unity3d.com/
 - https://msdn.microsoft.com/en-us/library/kx37x362.aspx
+
+-------------------------------------------------------------------------------
+Copyright © 2015 JJMS Team
+Released under The MIT License
+Project located at https://github.com/joegreene/2015-Spring-CS-121
