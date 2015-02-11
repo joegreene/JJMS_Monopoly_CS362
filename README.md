@@ -9,5 +9,7 @@ List of websites we'll use:
 
 -------------------------------------------------------------------------------
 Copyright © 2015 JJMS Team
+
 Released under The MIT License
-Project located at https://github.com/joegreene/2015-Spring-CS-121
+
+Project located at https://github.com/joegreene/JJMS_Monopoly_CS362/
