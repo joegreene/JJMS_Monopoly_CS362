@@ -11,7 +11,7 @@ public class SmoothRotate : MonoBehaviour
 	void Awake()
 	{
 		angle = -45;
-		speed = 1.0f;
+		speed = 3.0f * Time.fixedDeltaTime; 
 		timer = 60;
 		cooldown = 60;
 	}

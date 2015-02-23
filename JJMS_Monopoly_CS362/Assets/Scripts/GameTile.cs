@@ -8,13 +8,24 @@ public abstract class GameTile : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void initiateAction(Player target)
+	{
+
+	}
+
+	public void initiateAction(Player from, Player to)
+	{
+
+	}
+
+	public void initiateAction(Player target, int amount)
+	{
+
 	}
 
 }

@@ -7,13 +7,18 @@ public class Player : MonoBehaviour {
 	public string playerName;
 	public int playerIndex;
 	public int currentMoney;
+	public int gameBoardIndex;
 
 	private List<GameTile> tilesOwned;
 
 
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () 
+	{
+		tilesOwned = new List<GameTile>();
+		currentMoney = 1000;
+		playerIndex = GameManager.instance.players.Count - 1;
+		gameBoardIndex = 0;
 	}
 	
 	// Update is called once per frame

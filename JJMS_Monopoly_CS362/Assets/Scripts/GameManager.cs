@@ -9,14 +9,6 @@ public class GameManager : MonoBehaviour {
 	
 	public static GameManager instance;
 
-	public GameObject TilePrefab;
-	public GameObject dummyPrefab;
-	public GameObject playerPrefab;
-	public GameObject aiPlayer;
-	public GameObject playerArcher;
-	public GameObject aiArcher;
-	public GameObject aiMage;
-	public GameObject playerMage;
 	public GameObject focusPoint;
 	public bool playersTurn = false;
 
@@ -29,13 +21,27 @@ public class GameManager : MonoBehaviour {
 
 	public Vector3 cameraShiftDestination;
 
-	public List <GameTile> map;//The list of lists of tiles
+	public List <GameTile> gameBoard;//The list of lists of tiles
 	public List <Player> players = new List<Player>();//list of all the players
+	public List <GameObject> playerPieces;
+	public Vector3 startPosition;
+	public int currentCameraAngle;
+
+
+	private int currentIndex;
 
 	void Awake()
 	{
 
 		instance = this;
+		currentIndex = 0;
+		startPosition = Vector3.zero;
+		cameraShiftDestination = Vector3.zero;
+		currentCameraAngle = 0;
+
+
+		Player tempPlayer = ((GameObject)Instantiate (playerPieces[players.Count], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		players.Add (tempPlayer);
 
 	}
 
@@ -49,17 +55,42 @@ public class GameManager : MonoBehaviour {
 	{
 		if(Input.GetKeyUp(KeyCode.Space))
 		{
-			freeRoamMode = !freeRoamMode;
+			if(!freeRoamMode)
+			{
+				freeRoamMode = true;
+				currentCameraAngle = GetComponent<SmoothRotate>().angle;
+			}
+			else
+			{
+				freeRoamMode = false;
+				cameraShiftDestination = getCurrentPlayer().transform.position;
+				GetComponent<SmoothRotate>().angle = currentCameraAngle;
+
+			}
+		}
+		if(freeRoamMode)
+		{
+			if(Input.GetKeyUp (KeyCode.Q))
+			{
+				GetComponent<SmoothRotate>().angle -= 90;
+			}
+			if(Input.GetKeyUp (KeyCode.E))
+			{
+				GetComponent<SmoothRotate>().angle += 90;
+			}
+		}
+		else
+		{
+			shiftCamera();
 		}
 	}
 	
 	public void nextTurn()
 	{
+		currentIndex += 1;
+		currentIndex %= players.Count;
 
 	}
-	
-	
-	
 
 	
 	Player makePlayer(Vector3 startPosition, int playerLoadNumber, int classIndex)
@@ -111,6 +142,11 @@ public class GameManager : MonoBehaviour {
 				GameManager.instance.GetComponent<SmoothRotate>().angle = 315;
 			}
 		}
+	}
+
+	public Player getCurrentPlayer()
+	{
+		return players[currentIndex];
 	}
 
 }
