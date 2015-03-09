@@ -3,11 +3,16 @@ using System.Collections;
 
 public class PropertyTile : GameTile {
 
-	public int propertyCost;
-	public int numHouses;
-	public bool hasHotel;
-	public int rentAmount;
+	//Player-oriented attrib
 	public Player owner;
+	
+	//Property attrib
+	public int numHouses;
+	public bool isOwned;
+	public bool hasHotel;
+	public int propertyCost;
+	public int rentAmount;
+
 
 	// Use this for initialization
 	void Start () 
