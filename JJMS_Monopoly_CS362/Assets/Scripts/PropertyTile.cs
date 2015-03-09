@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PropertyTile : GameTile {
 
 	//Player-oriented attrib
 	public Player owner;
-	
+	public List <PropertyTile> associatedProperties;
+
 	//Property attrib
 	public int numHouses;
 	public bool isOwned;
@@ -24,6 +26,28 @@ public class PropertyTile : GameTile {
 		rentAmount = 0; 
 	}
 
+	void PlayerLanded(Player p)
+	{
+		if (isOwned)
+		{
 
+		}
+	}
+
+	private void CalculateRent(Player p)
+	{
+		//At start, player owns at least one of the associated properties (itself)
+		int num_owned = 1;
+
+		foreach (PropertyTile property in associatedProperties)
+		{
+			if(p.OwnsProperty(property))
+			{
+				num_owned+=1;
+			}
+		}
+
+		//do other rent calc here
+	}
 
 }
