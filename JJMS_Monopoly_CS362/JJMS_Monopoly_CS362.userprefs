@@ -1,13 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestButtonClick.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameManager.cs" Line="50" Column="2" />
-      <File FileName="Assets\Scripts\SmoothRotate.cs" Line="14" Column="12" />
-      <File FileName="Assets\Scripts\MoveToActive.cs" Line="14" Column="3" />
-      <File FileName="Assets\Scripts\Player.cs" Line="5" Column="38" />
-      <File FileName="Assets\Scripts\MoveCamera.cs" Line="26" Column="2" />
-      <File FileName="Assets\Scripts\GameTile.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/GUI.cs" Line="21" Column="38" />
+      <File FileName="Assets/TestButtonClick.cs" Line="4" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
