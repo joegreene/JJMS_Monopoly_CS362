@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using MonopolyProject;
+
 public abstract class GameTile : MonoBehaviour {
 
 	public string tileName;
@@ -13,19 +15,6 @@ public abstract class GameTile : MonoBehaviour {
 	
 	}
 
-	public void initiateAction(Player target)
-	{
-
-	}
-
-	public void initiateAction(Player from, Player to)
-	{
-
-	}
-
-	public void initiateAction(Player target, int amount)
-	{
-
-	}
+	void PlayerLanded(ref Player p);
 
 }
