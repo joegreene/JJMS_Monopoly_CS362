@@ -2,21 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using MonopolyProject;
 
 public class PropertyTile : GameTile {
 
 	//Player-oriented attrib
-	private Player owner;         //ask about where we will keep track of this
+	public Player owner;         //ask about where we will keep track of this
 								  //maybe "HasProperty" method in Player
-	private List <PropertyTile> associatedProperties;
+	public List <PropertyTile> associatedProperties;
 
 	//Property attrib
 	private string propertyName;
 	private int numHouses;        //ask about where we will keep track of this
 								  //maybe "GetNumHouses" method in Player
 	private int propertyCost;
-	private int baseRentAmount;
+	public int baseRentAmount;
 	private string color;
 
 
@@ -43,7 +42,7 @@ public class PropertyTile : GameTile {
 		else
 		{
 			//must pay rent
-			p.DecreaseCashAmount(CalculateRent(p));
+			p.DecreaseCashAmount(CalculateRent(ref p, ref owner));
 
 		}
 	}
@@ -74,6 +73,7 @@ public class PropertyTile : GameTile {
 				rent_due+=(property.baseRentAmount);
 			}
 		}
+		return rent_due;
 
 		//do other rent calc here
 	}

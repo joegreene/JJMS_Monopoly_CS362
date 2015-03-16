@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class JailSpotTile : MonoBehaviour {
+public class JailSpotTile : GameTile {
 
 	// Use this for initialization
 	void Start () {

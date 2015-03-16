@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
-using MonopolyProject;
 
 public class GameManager : MonoBehaviour {
 	
@@ -28,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	public Vector3 startPosition;
 	public int currentCameraAngle;
 
+	public Player activePlayer;
 
 	private int currentIndex;
 
@@ -43,6 +43,13 @@ public class GameManager : MonoBehaviour {
 
 		Player tempPlayer = ((GameObject)Instantiate (playerPieces[players.Count], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		players.Add (tempPlayer);
+
+		activePlayer = players [0];
+
+	}
+	void Start()
+	{
+
 
 	}
 
@@ -90,6 +97,8 @@ public class GameManager : MonoBehaviour {
 	{
 		currentIndex += 1;
 		currentIndex %= players.Count;
+		activePlayer = getCurrentPlayer ();
+		activePlayer.isTakingTurn = true;
 
 	}
 

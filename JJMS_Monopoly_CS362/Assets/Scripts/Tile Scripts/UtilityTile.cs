@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using MonopolyProject;
-
 public class UtilityTile : PropertyTile {
 
 	//NOTE: Start and Update made in PropertyTile already (no need to implement here I believe)
@@ -33,6 +31,8 @@ public class UtilityTile : PropertyTile {
 				rent_due+=(property.baseRentAmount);
 			}
 		}
+
+		return rent_due;
 		
 		//do other rent calc here
 	}

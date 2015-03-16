@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tile Scripts\UtilityTile.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tile Scripts\JailSpotTile.cs">
     <Files>
-      <File FileName="Assets\Scripts\Tile Scripts\GameTile.cs" Line="4" Column="23" />
-      <File FileName="Assets\Scripts\Tile Scripts\PropertyTile.cs" Line="33" Column="2" />
-      <File FileName="Assets\Scripts\Tile Scripts\RailroadTile.cs" Line="4" Column="23" />
-      <File FileName="Assets\Scripts\Tile Scripts\UtilityTile.cs" Line="4" Column="23" />
-      <File FileName="Assets\Scripts\Player.cs" Line="121" Column="27" />
+      <File FileName="Assets\Scripts\Tile Scripts\PropertyTile.cs" Line="36" Column="21" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="117" Column="2" />
+      <File FileName="Assets\Scripts\Player.cs" Line="67" Column="42" />
+      <File FileName="Assets\Scripts\Tile Scripts\JailSpotTile.cs" Line="4" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

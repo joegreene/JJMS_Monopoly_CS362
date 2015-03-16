@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using MonopolyProject;
 
 public class RailroadTile : PropertyTile {
 
@@ -33,6 +32,7 @@ public class RailroadTile : PropertyTile {
 				rent_due+=(property.baseRentAmount);
 			}
 		}
+		return rent_due;
 		
 		//do other rent calc here
 	}
