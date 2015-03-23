@@ -46,16 +46,28 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\Card.cs" />
      <Compile Include="Assets\Scripts\ChanceTile.cs" />
      <Compile Include="Assets\Scripts\GUI.cs" />
+=======
+>>>>>>> FETCH_HEAD
      <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\GameTile.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
      <Compile Include="Assets\Scripts\MoveToActive.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PropertyTile.cs" />
      <Compile Include="Assets\Scripts\SmoothRotate.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\ChanceTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\CommunityChestTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\FreeParkingTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\GameTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\GoSpotTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\GoToJailTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\JailSpotTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\LuxuryTaxTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\PropertyTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\RailroadTile.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\UtilityTile.cs" />
      <Compile Include="Assets\Scripts\rotate.cs" />
      <Compile Include="Assets\TestButtonClick.cs" />
  <Reference Include="UnityEngine.UI">
