@@ -2,8 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestButtonClick.cs">
     <Files>
-      <File FileName="Assets/Scripts/GUI.cs" Line="21" Column="38" />
-      <File FileName="Assets/TestButtonClick.cs" Line="4" Column="47" />
+      <File FileName="Assets/TestButtonClick.cs" Line="43" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

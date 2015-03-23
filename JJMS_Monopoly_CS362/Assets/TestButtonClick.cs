@@ -3,6 +3,7 @@ using System.Collections;
 
 
 public class TestButtonClick : MonoBehaviour {
+	public GameObject referencedButton;
 	public GUIText buttonText;
 	public string numberString;
 	public bool isClicked = false;
@@ -20,12 +21,13 @@ public class TestButtonClick : MonoBehaviour {
 
 		Debug.Log (text);
 		isClicked = true;
-		buttonText.text = getRandomNumber().ToString();
+
+		//buttonText.text = getRandomNumber().ToString();
 
 	}
 	void Start()
 	{
-		//number = Random.Range(2, 13);
+		//buttonText = "";
 	}
 
 	public int getRandomNumber()
@@ -37,7 +39,10 @@ public class TestButtonClick : MonoBehaviour {
 	{
 		if (isClicked == true) 
 		{
-			buttonText.text = getRandomNumber().ToString();
+			numberString = getRandomNumber ().ToString ();
+			buttonText.text = getRandomNumber ().ToString ();
+			//referencedButton.Get
+			isClicked = false;
 		}
 	}
 
