@@ -21,7 +21,7 @@ public class TestButtonClick : MonoBehaviour {
 
 		Debug.Log (text);
 		isClicked = true;
-		buttonText.text = getRandomNumber().ToString();
+		//buttonText.text = getRandomNumber().ToString();
 		isClicked = false;
 
 	}
@@ -40,8 +40,10 @@ public class TestButtonClick : MonoBehaviour {
 	{
 		if (isClicked == true) 
 		{
-	
-			buttonText.text = getRandomNumber().ToString();
+			number = getRandomNumber();
+			numberString = number.ToString ();
+
+			//buttonText.text = getRandomNumber().ToString();
 			isClicked = false;
 		}
 	}
