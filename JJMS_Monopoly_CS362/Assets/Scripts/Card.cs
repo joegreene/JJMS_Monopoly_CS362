@@ -17,31 +17,38 @@ public class Card : MonoBehaviour {
 
 	void payBank()
 	{
-
+		//player needs to pay bank a certain amount of money
+		//need player whose turn it is, and amount of money
 	}
 
 	void receiveFromBank()
 	{
-
+		//bank pays player certain amount of money
+		//need player whose turn it is, and amount of money
 	}
 
 	void payPlayers()
 	{
+		//player pays all other players certain amount of money
+		//need player whose turn it is, how many players, and amount of money
 	}
 
 	void receiveFromPlayers()
 	{
-
+		//player receives certain amount of money from all other players
+		//need player whose turn it is, how many players, and amount of money
 	}
 
 	void payOnePlayer()
 	{
-
+		//player pays one player a certain amount
+		//need player whose turn it is, player they need to pay, and amount of money
 	}
 
 	void holdOntoGetOutJailCard()
 	{
-
+		//player holds onto get out of jail card
+		//player whose turn it is
 	}
 
 }

@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestButtonClick.cs">
     <Files>
-      <File FileName="Assets/TestButtonClick.cs" Line="43" Column="19" />
+      <File FileName="Assets/TestButtonClick.cs" Line="43" Column="6" />
+      <File FileName="Assets/Scripts/Card.cs" Line="51" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
