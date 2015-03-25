@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GoSpotTile : GameTile {
+public class GoSpotTile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -55,9 +55,10 @@ public class Player : MonoBehaviour
 			Debug.Log ("IsMoving: " + isMoving + " IsTakingTurn: " + isTakingTurn);
 			if(isTakingTurn)
 			{
-				 
-				destinationTile = GameManager.instance.gameBoard[(currentTileIndex + rollDice()) % GameManager.instance.gameBoard.Count];
-				Debug.Log ((currentTileIndex + rollDice()) % GameManager.instance.gameBoard.Count);
+				int diceRoll = rollDice ();
+				destinationTile = GameManager.instance.gameBoard[(currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count];
+				Debug.Log ((currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count);
+				currentTileIndex += diceRoll % GameManager.instance.gameBoard.Count;
 				isMoving = true;
 				isTakingTurn = false;
 

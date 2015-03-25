@@ -2,14 +2,9 @@
 using System.Collections;
 
 public class LuxuryTaxTile : GameTile {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+  void PlayerLanded(ref Player p)
+  {
+    //deduct from player's cash amount by 10% of total property value
+    p.DecreaseCashAmount(.10*p.GetTotalWorth());
+  }
 }
