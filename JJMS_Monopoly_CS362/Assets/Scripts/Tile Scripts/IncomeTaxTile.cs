@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class GameTile : MonoBehaviour 
-{
-    //only thing that is in all game tiles
-	public string tileName;
+public class IncomeTaxTile : GameTile {
 
 	// Use this for initialization
 	void Start () {
@@ -16,5 +13,9 @@ public abstract class GameTile : MonoBehaviour
 		//unsure if used
 	}
 
-	abstract public void PlayerLanded(ref Player p);
+	public override void PlayerLanded(ref Player p)
+	{
+		//deduct from player's cash amount by 200
+		p.DecreaseCashAmount(200);
+	}
 }

@@ -2,8 +2,20 @@
 using System.Collections;
 
 public class GoToJailTile : GameTile {
-	void PlayerLanded(ref Player p)
-    {
-      //use game manager to move player to jail spot
-    }
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+	public override void PlayerLanded(ref Player p)
+	{
+		//Move player to jail tile (index)
+		//GameManager.instance.MovePlayerTo(p.GetIndex(), 10);
+	}
 }

@@ -2,42 +2,44 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using MonopolyProject;
-
 public class PropertyTile : GameTile {
-
+	
 	//Player-oriented attrib
-	private Player owner;         //ask about where we will keep track of this
-								  //maybe "HasProperty" method in Player
+	public Player owner;          //player that owns the property
 	public List <PropertyTile> associatedProperties;
 								  //either initialize via unity or init function
 								  //by-color attribute
-
+	
 	//Property attrib
-	public string propertyName;
 	public int numHouses;         //ask about where we will keep track of this
-								                //maybe "GetNumHouses" method in Player
+								  //maybe "GetNumHouses" method in Player
 	public int propertyCost;
 	public int baseRentAmount;
-	public Color color;
-
-
+	public string colorType;      //not an actual color, rather color type
+	
+	
 	// Use this for initialization; other values set up in unity
 	void Start () 
 	{
 		//Look through game board and add same-color 
 		foreach(GameTile t in GameManager.instance.gameBoard)
 		{
-			if(t.getComponent<PropertyTile>() != null)
+			var p = t as PropertyTile;
+			if(p != null)
 			{
-				if(this.color == t.color)
+				if(this.colorType == p.colorType)
 				{
-					associatedProperties.Add(t);
+					associatedProperties.Add(p);
 				}
 			}
 		}
-		owner.SetName(null);
+		owner.SetPlayerName(null);
 		numHouses = 0;
+	}
+
+	// Update is called once per frame
+	void Update () {
+		//unsure if used
 	}
 	
 	/*
@@ -47,7 +49,7 @@ public class PropertyTile : GameTile {
 	 *     five houses to a hotel
 	 * 	 - Otherwise, property is owned already and player must pay rent
 	 */
-	void PlayerLanded(ref Player p)
+	public override void PlayerLanded(ref Player p)
 	{
 		if (owner.GetPlayerName() == null)                     //Option to purchase property
 		{
@@ -56,9 +58,9 @@ public class PropertyTile : GameTile {
 			
 			//if player chooses to purchase, decrease cost from player, add property to player, 
 			//and set owner variable in this object to p
-				//p.DecreaseCashAmount(propertyCost);
-				//p.AddPropertyTile(this);
-				//this.owner = p;
+			//p.DecreaseCashAmount(propertyCost);
+			//p.AddPropertyTile(this);
+			//this.owner = p;
 		}
 		else if (owner.GetPlayerName() == p.GetPlayerName())   //player is owner
 		{
@@ -77,31 +79,26 @@ public class PropertyTile : GameTile {
 		}
 		else                                                   //Player must pay rent to owner
 		{
-			int costToPlayer = CalculateRent(owner);
+			int costToPlayer = CalculateRent();
 			p.DecreaseCashAmount(costToPlayer);
 			owner.IncreaseCashAmount(costToPlayer);
 		}
 	}
-
-	string GetPropertyName()
-	{
-		return propertyName;
-	}
-
+	
 	int GetBaseRentAmount()
 	{
 		return baseRentAmount;
 	}
-
+	
 	/*
 	 * Function to calculate rent (not sure if need reference or pass by-value is fine)
 	 * http://en.wikibooks.org/wiki/Monopoly/Official_Rules#Properties.2C_Rents.2C_and_Construction
 	 */
-	private int CalculateRent(ref Player owner)
+	private int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
 		int rent_due = 0;
-
+		
 		//Check each associated property to see how much rent is due
 		//At the moment, calculate by adding all rents together.
 		foreach (PropertyTile property in associatedProperties)
@@ -113,8 +110,10 @@ public class PropertyTile : GameTile {
 				rent_due+=(property.baseRentAmount + (property.numHouses*10));
 			}
 		}
-
+		
 		//do other rent calc here
-	}
 
+		return rent_due;
+	}
+	
 }
