@@ -1,19 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TestButtonClick.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Card.cs">
     <Files>
-      <File FileName="Assets/TestButtonClick.cs" Line="13" Column="5" />
-      <File FileName="Assets/Scripts/Card.cs" Line="22" Column="2" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tile Scripts\UtilityTile.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Tile Scripts\GameTile.cs" Line="4" Column="23" />
-      <File FileName="Assets\Scripts\Tile Scripts\PropertyTile.cs" Line="33" Column="2" />
-      <File FileName="Assets\Scripts\Tile Scripts\RailroadTile.cs" Line="4" Column="23" />
-      <File FileName="Assets\Scripts\Tile Scripts\UtilityTile.cs" Line="4" Column="23" />
-      <File FileName="Assets\Scripts\Player.cs" Line="121" Column="27" />
->>>>>>> FETCH_HEAD
+      <File FileName="Assets/TestButtonClick.cs" Line="51" Column="27" />
+      <File FileName="Assets/Scripts/Card.cs" Line="32" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

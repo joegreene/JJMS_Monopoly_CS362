@@ -3,31 +3,31 @@ using System.Collections;
 
 
 public class TestButtonClick : MonoBehaviour {
-	public GUIText buttonText;
+
 	public string numberString;
 	public bool isClicked = false;
 	public int number;
 	public string stringToEdit;
+	public string player1Bank;
+	public double player1;
+	public string player2Bank;
+	public double player2;
+	public double startingBank = 200.00;
+	public string bankString;
+
 	// Use this for initialization
-	public void ClickTest() {
-		//Debug.Log ("clicked");
+	public void ClickTest() 
+	{
 		isClicked = true;
-		//buttonText.text = getRandomNumber().ToString();
-
-
 	}
 	
-	public void ClickTest2(string text) {
-
-		Debug.Log (text);
+	public void ClickTest2(string text) 
+	{
 		isClicked = true;
-		//buttonText.text = getRandomNumber().ToString();
 		isClicked = false;
-
 	}
 	void Start()
 	{
-		//number = Random.Range(2, 13);
 	}
 
 	public int getRandomNumber()
@@ -42,13 +42,17 @@ public class TestButtonClick : MonoBehaviour {
 		{
 			number = getRandomNumber();
 			numberString = number.ToString ();
-
-			//buttonText.text = getRandomNumber().ToString();
 			isClicked = false;
 		}
 	}
-	void OnGUI () {
-				stringToEdit = UnityEngine.GUI.TextField (new Rect (300, 182, 20, 20), numberString, 4);
-		}
+	void OnGUI () 
+	{
+		player1 += startingBank;
+		player2 += startingBank;
+		player1Bank = player1.ToString();
+		player2Bank = player2.ToString();
+		stringToEdit = UnityEngine.GUI.TextField (new Rect (300, 182, 20, 20), numberString, 4);
+		player1Bank = UnityEngine.GUI.TextField (new Rect (65, 8, 60, 20), player1Bank, 30);
+	}
 
 }
