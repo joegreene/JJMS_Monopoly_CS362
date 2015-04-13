@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 
 		instance = this;
 		currentIndex = 0;
-		startPosition = Vector3.zero;
+		startPosition = gameBoard [0].transform.position;
 		cameraShiftDestination = Vector3.zero;
 		currentCameraAngle = 0;
 
@@ -157,6 +157,12 @@ public class GameManager : MonoBehaviour {
 	public Player getCurrentPlayer()
 	{
 		return players[currentIndex];
+	}
+
+	public void moveTo(Player player, int boardIndex)
+	{
+		player.destinationTile = gameBoard [boardIndex];
+		player.isMoving = true;
 	}
 
 }

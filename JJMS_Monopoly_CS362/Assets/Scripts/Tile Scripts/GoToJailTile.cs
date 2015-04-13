@@ -13,7 +13,7 @@ public class GoToJailTile : GameTile {
 		
 	}
 
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{
 		//Move player to jail tile (index)
 		//GameManager.instance.MovePlayerTo(p.GetIndex(), 10);

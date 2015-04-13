@@ -33,7 +33,7 @@ public class PropertyTile : GameTile {
 				}
 			}
 		}
-		owner.SetPlayerName(null);
+		owner = null;
 		numHouses = 0;
 	}
 
@@ -49,11 +49,11 @@ public class PropertyTile : GameTile {
 	 *     five houses to a hotel
 	 * 	 - Otherwise, property is owned already and player must pay rent
 	 */
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{
-		if (owner.GetPlayerName() == null)                     //Option to purchase property
+		if (owner == null)                     //Option to purchase property
 		{
-			
+			GUIManager.instance.displayPurchasePanel = true;
 			//whatever output to GUI goes here for asking user (leave as option on side or in a menu)
 			
 			//if player chooses to purchase, decrease cost from player, add property to player, 
@@ -62,7 +62,7 @@ public class PropertyTile : GameTile {
 			//p.AddPropertyTile(this);
 			//this.owner = p;
 		}
-		else if (owner.GetPlayerName() == p.GetPlayerName())   //player is owner
+		else if (owner == p)   //player is owner
 		{
 			//If number of houses on property is less than 4, 
 			if(numHouses < 4)

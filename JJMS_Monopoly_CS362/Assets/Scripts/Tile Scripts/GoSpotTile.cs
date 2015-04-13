@@ -13,7 +13,7 @@ public class GoSpotTile : GameTile {
 		//unsure if used
 	}
 	
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{
 		//Call this only after players have looped around game board 
 		//(i.e. do not call on start of game, only afterwards)

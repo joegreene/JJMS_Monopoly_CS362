@@ -13,7 +13,7 @@ public class IncomeTaxTile : GameTile {
 		//unsure if used
 	}
 
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{
 		//deduct from player's cash amount by 200
 		p.DecreaseCashAmount(200);

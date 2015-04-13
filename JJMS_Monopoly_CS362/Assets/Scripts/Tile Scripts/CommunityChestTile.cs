@@ -13,7 +13,7 @@ public class CommunityChestTile : GameTile {
 		
 	}
 
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{
 
 	}

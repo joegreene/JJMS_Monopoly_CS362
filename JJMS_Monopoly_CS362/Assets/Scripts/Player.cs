@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 	private string playerName; // Players name will default to Player 1,2,3,.... or, n amount of playhers
 	// DO YOU WANT TO KEEP TRACK OF DEMONINATION OF BILLS I.E. $1, $5, $10, ...
 	// if so...check out cashAmountTwo;
-	private int cashAmount; // Amount of money in the player's bank
+	public int cashAmount; // Amount of money in the player's bank
 	private int[,] cashAmountTwo = new int [1, 7];
 	public GameObject token; // The token peice that the player has chosen to represent the player on the board
 	//private GameTile playerLocation; // PropertyTile that the player is currently one
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 		propertiesOwned2 = new Dictionary<PropertyTile, IDictionary<int, int>>();
 	//Default Constructor
 
-	private List<PropertyTile> propertiesOwned3 = new List<PropertyTile>();
+	public List<PropertyTile> propertiesOwned3 = new List<PropertyTile>();
 	public int currentTileIndex;
 	public GameTile currentTile;
 	public bool isTakingTurn;
@@ -57,8 +57,10 @@ public class Player : MonoBehaviour
 			{
 				int diceRoll = rollDice ();
 				destinationTile = GameManager.instance.gameBoard[(currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count];
-				Debug.Log ((currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count);
+				
+				
 				currentTileIndex += diceRoll % GameManager.instance.gameBoard.Count;
+
 				isMoving = true;
 				isTakingTurn = false;
 
@@ -70,6 +72,8 @@ public class Player : MonoBehaviour
 				{
 					transform.position = destinationTile.transform.position;
 					isMoving = false;
+					destinationTile.PlayerLanded(this);
+
 				}
 			}
 
@@ -115,7 +119,7 @@ public class Player : MonoBehaviour
 	}
 	public void AddPropertyTile(PropertyTile PropertyTileToBeAdded)
 	{
-		propertiesOwned.Add(PropertyTileToBeAdded, 0);
+		propertiesOwned3.Add(PropertyTileToBeAdded);
 	}
 	public void RemovePropertyTile(PropertyTile PropertyTileToBeRemoved)
 	{

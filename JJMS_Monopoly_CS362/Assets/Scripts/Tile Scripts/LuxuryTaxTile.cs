@@ -13,7 +13,7 @@ public class LuxuryTaxTile : GameTile {
 		//unsure if used
 	}
 
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{
 		//deduct from player's cash amount by 10% of total property value
 		//p.DecreaseCashAmount(.10*p.GetTotalWorth());

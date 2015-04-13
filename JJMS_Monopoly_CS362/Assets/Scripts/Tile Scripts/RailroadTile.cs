@@ -17,9 +17,9 @@ public class RailroadTile : PropertyTile {
 		//unsure if used
 	}
 	
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{	
-		if (owner.GetPlayerName() == null)                   
+		if (owner == null)                   
 		{
 			//Option to purchase property
 			
@@ -31,7 +31,7 @@ public class RailroadTile : PropertyTile {
 			//p.AddPropertyTile(this);
 			//this.owner = p.GetPlayerName();
 		}
-		else if (owner.GetPlayerName() == p.GetPlayerName()) 
+		else if (owner == p) 
 		{
 			//do nothing
 		}

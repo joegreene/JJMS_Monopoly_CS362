@@ -16,5 +16,5 @@ public abstract class GameTile : MonoBehaviour
 		//unsure if used
 	}
 
-	abstract public void PlayerLanded(ref Player p);
+	abstract public void PlayerLanded(Player p);
 }

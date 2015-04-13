@@ -10,7 +10,7 @@ public class UtilityTile : PropertyTile {
 		associatedProperties.Add(GameManager.instance.gameBoard[12] as PropertyTile);  //electric company
 		associatedProperties.Add(GameManager.instance.gameBoard[28] as PropertyTile);  //waterworks
 
-		owner.SetPlayerName(null);                                     //
+		owner = null;                                    //
 		numHouses = -1;                                                //no houses
 	}
 	
@@ -19,7 +19,7 @@ public class UtilityTile : PropertyTile {
 	
 	}
 	
-	public override void PlayerLanded(ref Player p)
+	public override void PlayerLanded(Player p)
 	{	
 		if (owner.GetPlayerName() == null)                   
 		{
