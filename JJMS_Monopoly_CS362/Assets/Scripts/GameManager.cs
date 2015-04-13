@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	public Vector3 startPosition;
 	public int currentCameraAngle;
 
+	public Player activePlayer;
 
 	private int currentIndex;
 
@@ -36,13 +37,20 @@ public class GameManager : MonoBehaviour {
 
 		instance = this;
 		currentIndex = 0;
-		startPosition = Vector3.zero;
+		startPosition = gameBoard [0].transform.position;
 		cameraShiftDestination = Vector3.zero;
 		currentCameraAngle = 0;
 
 
 		Player tempPlayer = ((GameObject)Instantiate (playerPieces[players.Count], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		players.Add (tempPlayer);
+
+		activePlayer = players [0];
+
+	}
+	void Start()
+	{
+
 
 	}
 
@@ -90,6 +98,8 @@ public class GameManager : MonoBehaviour {
 	{
 		currentIndex += 1;
 		currentIndex %= players.Count;
+		activePlayer = getCurrentPlayer ();
+		activePlayer.isTakingTurn = true;
 
 	}
 
@@ -148,6 +158,12 @@ public class GameManager : MonoBehaviour {
 	public Player getCurrentPlayer()
 	{
 		return players[currentIndex];
+	}
+
+	public void moveTo(Player player, int boardIndex)
+	{
+		player.destinationTile = gameBoard [boardIndex];
+		player.isMoving = true;
 	}
 
 }
