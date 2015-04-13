@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
-using MonopolyProject;
 
 public class GameManager : MonoBehaviour {
 	

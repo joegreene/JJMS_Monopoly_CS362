@@ -2,80 +2,118 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using MonopolyProject;
-
 public class PropertyTile : GameTile {
-
+	
 	//Player-oriented attrib
-	private Player owner;         //ask about where we will keep track of this
-								  //maybe "HasProperty" method in Player
-	private List <PropertyTile> associatedProperties;
-
+	public Player owner;          //player that owns the property
+	public List <PropertyTile> associatedProperties;
+								  //either initialize via unity or init function
+								  //by-color attribute
+	
 	//Property attrib
-	private string propertyName;
-	private int numHouses;        //ask about where we will keep track of this
+	public int numHouses;         //ask about where we will keep track of this
 								  //maybe "GetNumHouses" method in Player
-	private int propertyCost;
-	private int baseRentAmount;
-	private string color;
-
-
-	// Use this for initialization
+	public int propertyCost;
+	public int baseRentAmount;
+	public string colorType;      //not an actual color, rather color type
+	
+	
+	// Use this for initialization; other values set up in unity
 	void Start () 
 	{
+		//Look through game board and add same-color 
+		foreach(GameTile t in GameManager.instance.gameBoard)
+		{
+			var p = t as PropertyTile;
+			if(p != null)
+			{
+				if(this.colorType == p.colorType)
+				{
+					associatedProperties.Add(p);
+				}
+			}
+		}
 		owner = null;
-		color = null;
-		propertyCost = 0;
 		numHouses = 0;
-		baseRentAmount = 0; 
 	}
 
-	void PlayerLanded(ref Player p)
+	// Update is called once per frame
+	void Update () {
+		//unsure if used
+	}
+	
+	/*
+	 * Three event may occur if the player lands on a property:
+	 *   - If there is no owner, give the lander an option to purchase the property
+	 *   - Else if the player is already the owner, give the option to add a house/convert 
+	 *     five houses to a hotel
+	 * 	 - Otherwise, property is owned already and player must pay rent
+	 */
+	public override void PlayerLanded(Player p)
 	{
-		if (owner.GetPlayerName() == null)
+		if (owner == null)                     //Option to purchase property
 		{
-			//give option to purchase house
-				//whatever output to GUI goes here for asking user
-				//if chose to purchase
-					//p.DecreaseCashAmount(propertyCost);
-					//p.AddPropertyTile(this);
+			GUIManager.instance.displayPurchasePanel = true;
+			//whatever output to GUI goes here for asking user (leave as option on side or in a menu)
+			
+			//if player chooses to purchase, decrease cost from player, add property to player, 
+			//and set owner variable in this object to p
+			//p.DecreaseCashAmount(propertyCost);
+			//p.AddPropertyTile(this);
+			//this.owner = p;
 		}
-		else
+		else if (owner == p)   //player is owner
 		{
-			//must pay rent
-			p.DecreaseCashAmount(CalculateRent(p));
-
+			//If number of houses on property is less than 4, 
+			if(numHouses < 4)
+			{
+				//do normal house-purchase prompt
+				
+				//give option on side 
+			}
+			else if (numHouses == 4)
+			{
+				//do prompt for convert-to-hotel
+			}
+			//no else here
+		}
+		else                                                   //Player must pay rent to owner
+		{
+			int costToPlayer = CalculateRent();
+			p.DecreaseCashAmount(costToPlayer);
+			owner.IncreaseCashAmount(costToPlayer);
 		}
 	}
-
-	string GetPropertyName()
-	{
-		return propertyName;
-	}
-
+	
 	int GetBaseRentAmount()
 	{
 		return baseRentAmount;
 	}
-
-	//@TODO (check list of rent tables)
-	private int CalculateRent(ref Player p, ref Player owner)
+	
+	/*
+	 * Function to calculate rent (not sure if need reference or pass by-value is fine)
+	 * http://en.wikibooks.org/wiki/Monopoly/Official_Rules#Properties.2C_Rents.2C_and_Construction
+	 */
+	private int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
 		int rent_due = 0;
-
+		
 		//Check each associated property to see how much rent is due
 		//At the moment, calculate by adding all rents together.
 		foreach (PropertyTile property in associatedProperties)
 		{
-			//NOTE: need to implement below method
+			
+			//NOTE: For now, rent is base amount 
 			if(owner.OwnsProperty(property))
 			{
-				rent_due+=(property.baseRentAmount);
+				rent_due+=(property.baseRentAmount + (property.numHouses*10));
 			}
 		}
-
+		
 		//do other rent calc here
-	}
 
+		return rent_due;
+	}
+	
 }
