@@ -12,26 +12,9 @@ public class Player : MonoBehaviour
 	// DO YOU WANT TO KEEP TRACK OF DEMONINATION OF BILLS I.E. $1, $5, $10, ...
 	// if so...check out cashAmountTwo;
 	public int cashAmount; // Amount of money in the player's bank
-	private int[,] cashAmountTwo = new int [1, 7];
 	public GameObject token; // The token peice that the player has chosen to represent the player on the board
-	//private GameTile playerLocation; // PropertyTile that the player is currently one
-	/* Associative array where the first slot keeps track of the properties owned by the second attribute is associated
-	 * with the ammount houses and hotels the player has on that PropertyTile. I used an associative array in that it is easier to keep
-	 * track of two items that are associated with one another but different data types. We can split the second attribute into a second
-	 * dictionary where the first PropertyTile is number of houses and the second is the number of hotels. I wasnt to sure how houses and hotels
-	 * going to be implented in this game, as and object or an attribute to the location.
-	 */
-	// This Dictionary implies that the second attribute is associated with the number of houses and hotels and one number. Where 0 is neither
-	// houses nor hotels are owned. 1, 2, and 3 represent the number of houses. 4 represents 1 hotel and 5 represents 2 hotels
-	private IDictionary<PropertyTile, int>
-		propertiesOwned = new Dictionary<PropertyTile, int>();
-	// This Dictionary imples that the second attribute is associate witht the number of houses and hotels as two seperate entities in another
-	// Dictionary. The first PropertyTile represents the number of house, the second represents the number of hotels.
-	private IDictionary<PropertyTile, IDictionary<int, int>>
-		propertiesOwned2 = new Dictionary<PropertyTile, IDictionary<int, int>>();
-	//Default Constructor
-
-	public List<PropertyTile> propertiesOwned3 = new List<PropertyTile>();
+	public List<PropertyTile>
+				propertiesOwned = new List<PropertyTile> ();
 	public int currentTileIndex;
 	public GameTile currentTile;
 	public bool isTakingTurn;
@@ -105,17 +88,6 @@ public class Player : MonoBehaviour
 	public void DecreaseCashAmount(int decreaseCashByThisAmount)
 	{
 		cashAmount = cashAmount - decreaseCashByThisAmount;
-	}
-	public int GetCashAmountTwo()
-	{
-		int total;
-		total = cashAmountTwo[0, 0] + (cashAmountTwo[0, 1] * 5) + (cashAmountTwo[0, 2] * 10)
-			+ (cashAmountTwo[0, 3] * 20) + (cashAmountTwo[0, 4] * 100) + (cashAmountTwo[0, 6] * 500);
-		return total;
-	}
-	public void SetCashAmountTwo(int demoninationToChange, int newAmount)
-	{
-		cashAmountTwo[0, demoninationToChange] = newAmount;
 	}
 	public void AddPropertyTile(PropertyTile PropertyTileToBeAdded)
 	{
