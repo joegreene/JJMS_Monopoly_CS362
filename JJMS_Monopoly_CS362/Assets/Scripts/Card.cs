@@ -3,9 +3,6 @@ using System.Collections;
 
 public class Card : MonoBehaviour {
 
-	//int[] numChanceCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-	//int[] numCcCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-
 	public string chancecard1 = "Advance to go - collect $200";
 	public string chancecard2 = "Advance to Illinois Ave";
 	public string chancecard3 = "Advance token to nearest Utility - if unowned, you may buy it from the bank, if owned, throw dice and pay owner a total ten times the amount thrown.";
@@ -74,174 +71,260 @@ public class Card : MonoBehaviour {
 		return randomCC;
 	}
 
-	public void ChanceCards()
+	public void ChanceCards(Player player)
 	{
 		randomChance = getRandomChance ();
 
 		if (randomChance == 1) 
 		{
 			print (chancecard1);
+			player.destinationTile = GameManager.instance.gameBoard[0];
+			player.isMoving = true;
+			player.cashAmount += 200;
 			//move player to GO
 		}
-		if (randomChance == 2) 
+		else if (randomChance == 2) 
 		{
 			print (chancecard2);
+			player.destinationTile = GameManager.instance.gameBoard[24];
+			player.isMoving = true;
 			//move player to Illinois Ave
 		}
-		if (randomChance == 3) 
+		else if (randomChance == 3) 
 		{
 			print (chancecard3);
+			if(player.currentTileIndex > 28 || player.currentTileIndex < 13)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[12];
+				player.isMoving = true;
+			}
+			else 
+			{
+				player.destinationTile = GameManager.instance.gameBoard[28];
+				player.isMoving = true;
+			}
 			//move player to nearest Utility
 		}
-		if (randomChance == 4) 
+		else if (randomChance == 4) 
 		{
 			print (chancecard4);
+			if(player.currentTileIndex > 35 || player.currentTileIndex < 6)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[5];
+				player.isMoving = true;
+			}
+			else if(player.currentTileIndex > 5 && player.currentTileIndex < 16)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[15];
+				player.isMoving = true;
+			}
+			else if(player.currentTileIndex > 15 && player.currentTileIndex < 26)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[25];
+				player.isMoving = true;
+			}
+			else
+			{
+				player.destinationTile = GameManager.instance.gameBoard[35];
+				player.isMoving = true;
+			}
+
 			//move player to nearest Railroad
 		}
-		if (randomChance == 5) 
+		else if (randomChance == 5) 
 		{
 			print (chancecard5);
+			if(player.currentTileIndex > 35 || player.currentTileIndex < 6)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[5];
+				player.isMoving = true;
+			}
+			else if(player.currentTileIndex > 5 && player.currentTileIndex < 16)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[15];
+				player.isMoving = true;
+			}
+			else if(player.currentTileIndex > 15 && player.currentTileIndex < 26)
+			{
+				player.destinationTile = GameManager.instance.gameBoard[25];
+				player.isMoving = true;
+			}
+			else
+			{
+				player.destinationTile = GameManager.instance.gameBoard[35];
+				player.isMoving = true;
+			}
 			//move player to nearest Railroad
 		}
-		if (randomChance == 6) 
+		else if (randomChance == 6) 
 		{
 			print (chancecard6);
 			//move player to St.Charles Place
+			player.destinationTile = GameManager.instance.gameBoard[11];
+			player.isMoving = true;
 		}
-		if (randomChance == 7) 
+		else if (randomChance == 7) 
 		{
 			print (chancecard7);
+			player.cashAmount += 50;
 			//money - receive $50
 		}
-		if (randomChance == 8) 
+		else if (randomChance == 8) 
 		{
 			print (chancecard8);
 			//?? get out of jail free card
 		}
-		if (randomChance == 9) 
+		else if (randomChance == 9) 
 		{
 			print (chancecard9);
+			player.destinationTile = GameManager.instance.gameBoard[player.currentTileIndex - 3];
+			player.isMoving = true;
 			//move player back 3 places
 		}
-		if (randomChance == 10) 
+		else if (randomChance == 10) 
 		{
 			print (chancecard10);
+			player.destinationTile = GameManager.instance.gameBoard[10];
+			player.isMoving = true;
 			//move player to jail
 		}
-		if (randomChance == 11) 
+		else if (randomChance == 11) 
 		{
 			print (chancecard11);
+			//need to go through a for loop to see how many properties each player owns?
 			//money - each house pay $25, for each hotel pay $100
 		}
-		if (randomChance == 12) 
+		else if (randomChance == 12) 
 		{
 			print (chancecard12);
+			player.cashAmount -= 15;
 			//money - pay $15
 		}
-		if (randomChance == 13) 
+		else if (randomChance == 13) 
 		{
 			print (chancecard13);
+			player.destinationTile = GameManager.instance.gameBoard[5];
+			player.isMoving = true;
 			//move player to Reading Railroad
 		}
-		if (randomChance == 14) 
+		else if (randomChance == 14) 
 		{
 			print (chancecard14);
+			player.destinationTile = GameManager.instance.gameBoard[39];
+			player.isMoving = true;
 			//move player to Boardwalk
 		}
-		if (randomChance == 15) 
+		else if (randomChance == 15) 
 		{
 			print (chancecard15);
 			//money - pay each player $50
 		}
-		if (randomChance == 16) 
+		else if (randomChance == 16) 
 		{
 			print (chancecard16);
+			player.cashAmount += 150;
 			//money - collect $150
 		}
 
 	}
-	public void CommunityChestCards()
+	public void CommunityChestCards(Player player)
 	{
 		randomCC = getRandomCC ();
 
 		if (randomCC == 1) 
 		{
 			print (cccard1);
+			player.destinationTile = GameManager.instance.gameBoard[0];
+			player.isMoving = true;
+			player.cashAmount += 200;
 			//move player - to GO
 		}
-		if (randomCC == 2) 
+		else if (randomCC == 2) 
 		{
 			print (cccard2);
+			player.cashAmount += 200;
 			//money - collect $200
 		}
-		if (randomCC == 3) 
+		else if (randomCC == 3) 
 		{
 			print (cccard3);
+			player.cashAmount -= 50;
 			//money - Pay $50
 		}
-		if (randomCC == 4) 
+		else if (randomCC == 4) 
 		{
 			print (cccard4);
+			player.cashAmount += 50;
 			//money - collect $50
 		}
-		if (randomCC == 5) 
+		else if (randomCC == 5) 
 		{
 			print (cccard5);
 			//?? get out of jail free card
 		}
-		if (randomCC == 6) 
+		else if (randomCC == 6) 
 		{
 			print (cccard6);
+			player.destinationTile = GameManager.instance.gameBoard[10];
+			player.isMoving = true;
 			//move player - Go to jail
 		}
-		if (randomCC == 7) 
+		else if (randomCC == 7) 
 		{
 			print (cccard7);
 			//money - collect $50 from every player
 		}
-		if (randomCC == 8) 
+		else if (randomCC == 8) 
 		{
 			print (cccard8);
+			player.cashAmount += 100;
 			//money - collect $100
 		}
-		if (randomCC == 9) 
+		else if (randomCC == 9) 
 		{
 			print (cccard9);
+			player.cashAmount += 20;
 			//money - collect $20
 		}
-		if (randomCC == 10) 
+		else if (randomCC == 10) 
 		{
 			print (cccard10);
+			player.cashAmount += 25;
 			//money - collect $25
 		}
-		if (randomCC == 11) 
+		else if (randomCC == 11) 
 		{
 			print (cccard11);
+			player.cashAmount += 100;
 			//money - collect $100
 		}
-		if (randomCC == 12) 
+		else if (randomCC == 12) 
 		{
 			print (cccard12);
+			player.cashAmount -= 100;
 			//money - pay $100
 		}
-		if (randomCC == 13) 
+		else if (randomCC == 13) 
 		{
 			print (cccard13);
+			player.cashAmount -= 150;
 			//money - pay $150
 		}
-		if (randomCC == 14) 
+		else if (randomCC == 14) 
 		{
 			print (cccard14);
 			//money - Pay $40 per house and $115 per hotel
 		}
-		if (randomCC == 15) 
+		else if (randomCC == 15) 
 		{
 			print (cccard15);
+			player.cashAmount += 10;
 			//money - collect $10
 		}
-		if (randomCC == 16) 
+		else if (randomCC == 16) 
 		{
 			print (cccard16);
+			player.cashAmount += 100;
 			//money - collect $100
 		}
 		

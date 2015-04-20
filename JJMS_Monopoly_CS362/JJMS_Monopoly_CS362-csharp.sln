@@ -17,8 +17,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-<<<<<<< HEAD
-																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																														GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																										GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> FETCH_HEAD
@@ -26,7 +25,7 @@ Global
 																																																						GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> mollys-branch
 =======
-																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+																																																																						GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> origin/Josh
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
