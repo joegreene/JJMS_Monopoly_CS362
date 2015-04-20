@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	public Vector3 startPosition;
 	public int currentCameraAngle;
 
+	public Card eventCards; 
 	public Player activePlayer;
 
 	private int currentIndex;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour {
 
 		instance = this;
 		currentIndex = 0;
+
 		startPosition = gameBoard [0].transform.position;
 		cameraShiftDestination = Vector3.zero;
 		currentCameraAngle = 0;

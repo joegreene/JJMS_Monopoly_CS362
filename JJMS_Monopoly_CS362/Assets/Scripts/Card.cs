@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Card : MonoBehaviour {
 
-	int[] numChanceCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-	int[] numCcCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
 	public string chancecard1 = "Advance to go - collect $200";
 	public string chancecard2 = "Advance to Illinois Ave";
@@ -74,93 +72,99 @@ public class Card : MonoBehaviour {
 		return randomCC;
 	}
 
-	public void ChanceCards()
+	public void ChanceCards(Player player)
 	{
 		randomChance = getRandomChance ();
+
 
 		if (randomChance == 1) 
 		{
 			print (chancecard1);
+			player.destinationTile = GameManager.instance.gameBoard[0];
+			player.isMoving = true;
+			player.cashAmount += 200;
 			//move player
 		}
-		if (randomChance == 2) 
+		else if (randomChance == 2) 
 		{
 			print (chancecard2);
+			player.destinationTile = GameManager.instance.gameBoard[24];
+			player.isMoving = true;
 			//move player
 		}
-		if (randomChance == 3) 
+		else if (randomChance == 3) 
 		{
 			print (chancecard3);
 			//move player
 		}
-		if (randomChance == 4) 
+		else if (randomChance == 4) 
 		{
 			print (chancecard4);
 			//move player
 		}
-		if (randomChance == 5) 
+		else if (randomChance == 5) 
 		{
 			print (chancecard5);
 			//move player
 		}
-		if (randomChance == 6) 
+		else if (randomChance == 6) 
 		{
 			print (chancecard6);
 			//move player
 		}
-		if (randomChance == 7) 
+		else if (randomChance == 7) 
 		{
 			print (chancecard7);
 			//money
 		}
-		if (randomChance == 8) 
+		else if (randomChance == 8) 
 		{
 			print (chancecard8);
 			//??
 		}
-		if (randomChance == 9) 
+		else if (randomChance == 9) 
 		{
 			print (chancecard9);
 			//move player
 		}
-		if (randomChance == 10) 
+		else if (randomChance == 10) 
 		{
 			print (chancecard10);
 			//move player
 		}
-		if (randomChance == 11) 
+		else if (randomChance == 11) 
 		{
 			print (chancecard11);
 			//money
 		}
-		if (randomChance == 12) 
+		else if (randomChance == 12) 
 		{
 			print (chancecard12);
 			//money
 		}
-		if (randomChance == 13) 
+		else if (randomChance == 13) 
 		{
 			print (chancecard13);
 			//move player
 		}
-		if (randomChance == 14) 
+		else if (randomChance == 14) 
 		{
 			print (chancecard14);
 			//move player
 		}
-		if (randomChance == 15) 
+		else if (randomChance == 15) 
 		{
 			print (chancecard15);
 			//money
 		}
-		if (randomChance == 16) 
+		else if (randomChance == 16) 
 		{
 			print (chancecard16);
 			//money
 		}
 
 	}
-	public void CommunityChestCards()
+	public void CommunityChestCards(Player player)
 	{
 		randomCC = getRandomCC ();
 
@@ -169,83 +173,82 @@ public class Card : MonoBehaviour {
 			print (cccard1);
 			//move player
 		}
-		if (randomCC == 2) 
+		else if (randomCC == 2) 
 		{
 			print (cccard2);
 			//money
 		}
-		if (randomCC == 3) 
+		else if (randomCC == 3) 
 		{
 			print (cccard3);
 			//money
 		}
-		if (randomCC == 4) 
+		else if (randomCC == 4) 
 		{
 			print (cccard4);
 			//money
 		}
-		if (randomCC == 5) 
+		else if (randomCC == 5) 
 		{
 			print (cccard5);
 			//??
 		}
-		if (randomCC == 6) 
+		else if (randomCC == 6) 
 		{
 			print (cccard6);
 			//move player
 		}
-		if (randomCC == 7) 
+		else if (randomCC == 7) 
 		{
 			print (cccard7);
 			//money
 		}
-		if (randomCC == 8) 
+		else if (randomCC == 8) 
 		{
 			print (cccard8);
 			//money
 		}
-		if (randomCC == 9) 
+		else if (randomCC == 9) 
 		{
 			print (cccard9);
 			//money
 		}
-		if (randomCC == 10) 
+		else if (randomCC == 10) 
 		{
 			print (cccard10);
 			//money
 		}
-		if (randomCC == 11) 
+		else if (randomCC == 11) 
 		{
 			print (cccard11);
 			//money
 		}
-		if (randomCC == 12) 
+		else if (randomCC == 12) 
 		{
 			print (cccard12);
 			//money
 		}
-		if (randomCC == 13) 
+		else if (randomCC == 13) 
 		{
 			print (cccard13);
 			//money
 		}
-		if (randomCC == 14) 
+		else if (randomCC == 14) 
 		{
 			print (cccard14);
 			//money
 		}
-		if (randomCC == 15) 
+		else if (randomCC == 15) 
 		{
 			print (cccard15);
 			//money
 		}
-		if (randomCC == 16) 
+		else if (randomCC == 16) 
 		{
 			print (cccard16);
 			//money
 		}
 		
 	}
-	
 
 }
