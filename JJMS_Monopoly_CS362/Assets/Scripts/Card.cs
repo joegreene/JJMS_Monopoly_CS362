@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Card : MonoBehaviour {
 
-	int numChanceCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-	int numCcCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+	int[] numChanceCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+	int[] numCcCards = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
 	public string chancecard1 = "Advance to go - collect $200";
 	public string chancecard2 = "Advance to Illinois Ave";

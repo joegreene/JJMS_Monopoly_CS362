@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
 	}
 	public void AddPropertyTile(PropertyTile PropertyTileToBeAdded)
 	{
-		propertiesOwned3.Add(PropertyTileToBeAdded);
+		propertiesOwned.Add(PropertyTileToBeAdded);
 	}
 	public void RemovePropertyTile(PropertyTile PropertyTileToBeRemoved)
 	{
@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
 
 	public bool OwnsProperty(PropertyTile tileToCheck)
 	{
-		if(propertiesOwned3.Contains(tileToCheck))
+		if(propertiesOwned.Contains(tileToCheck))
 		{
 			return true;
 		}

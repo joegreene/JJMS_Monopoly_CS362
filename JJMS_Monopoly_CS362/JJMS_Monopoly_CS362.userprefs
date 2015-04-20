@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Card.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TestButtonClick.cs">
     <Files>
-      <File FileName="Assets/TestButtonClick.cs" Line="45" Column="4" />
-      <File FileName="Assets/Scripts/Card.cs" Line="69" Column="3" />
+      <File FileName="Assets\Scripts\Card.cs" Line="10" Column="56" />
+      <File FileName="Assets\TestButtonClick.cs" Line="40" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
