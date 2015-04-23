@@ -48,7 +48,7 @@ public class UtilityTile : PropertyTile {
 	}
 	
 	//@TODO (check list of rent tables)
-	private int CalculateRent()
+	protected override int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
 		int rent_due = 0;

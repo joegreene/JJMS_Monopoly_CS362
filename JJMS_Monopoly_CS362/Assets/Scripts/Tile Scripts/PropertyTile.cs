@@ -94,7 +94,7 @@ public class PropertyTile : GameTile {
 	 * Function to calculate rent (not sure if need reference or pass by-value is fine)
 	 * http://en.wikibooks.org/wiki/Monopoly/Official_Rules#Properties.2C_Rents.2C_and_Construction
 	 */
-	private int CalculateRent()
+	protected virtual int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
 		int rent_due = 0;
