@@ -13,13 +13,14 @@ public class Player : MonoBehaviour
 	// if so...check out cashAmountTwo;
 	public int cashAmount; // Amount of money in the player's bank
 	public GameObject token; // The token peice that the player has chosen to represent the player on the board
-	public List<PropertyTile>
-				propertiesOwned = new List<PropertyTile> ();
+	public List<PropertyTile> propertiesOwned = new List<PropertyTile> ();
 	public int currentTileIndex;
 	public GameTile currentTile;
 	public bool isTakingTurn;
 	public bool isMoving;
 	public GameTile destinationTile;
+    public int totalNumberOfHouses;
+    public int totalPlayersWorth;
 
 	void Start()
 	{
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
 		cashAmount = 1500;
 		isTakingTurn = false;
 		destinationTile = currentTile;
+        totalNumberOfHouses = 0;
 	}
 
 	void Update()
@@ -117,9 +119,27 @@ public class Player : MonoBehaviour
 			return false;
 		}
 	}
+
+    public void TotalHousesOwned()
+    {
+        foreach(var PropertyTile in propertiesOwned)
+        {
+            totalNumberOfHouses += PropertyTile.numHouses;
+        }
+    }
+
 	public int rollDice()
 	{
 		return Random.Range (2, 12);
 
 	}
+
+    public int GetPlayerWorth()
+    {
+        foreach (var PropertyTile in propertiesOwned)
+        {
+            totalPlayersWorth += PropertyTile.propertyCost;
+            totalPlayersWorth += (property.numHouses*10);
+        }
+    }
 }
