@@ -56,20 +56,20 @@ public class Player : MonoBehaviour
 			{
 				if(destinationTile.transform.position.x == GameManager.instance.gameBoard[0].transform.position.x || destinationTile.transform.position.x == GameManager.instance.gameBoard[10].transform.position.x)
 				{
-					transform.position = Vector3.MoveTowards(transform.position, new Vector3(destinationTile.transform.position.x, transform.position.y, transform.position.z), Time.deltaTime);
+					transform.position = Vector3.MoveTowards(transform.position, new Vector3(destinationTile.transform.position.x, transform.position.y, transform.position.z),  2.5f*Time.deltaTime);
 
 					if(transform.position.x == destinationTile.transform.position.x)
 					{
-						transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, destinationTile.transform.position.z), Time.deltaTime);		
+						transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, destinationTile.transform.position.z),  2.5f* Time.deltaTime);		
 					}
 				}
 				else
 				{
-					transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, destinationTile.transform.position.z), Time.deltaTime);		
+					transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, destinationTile.transform.position.z),  2.5f*Time.deltaTime);		
 
 					if(transform.position.z == destinationTile.transform.position.z)
 					{
-						transform.position = Vector3.MoveTowards(transform.position, new Vector3(destinationTile.transform.position.x, transform.position.y, transform.position.z), Time.deltaTime);
+						transform.position = Vector3.MoveTowards(transform.position, new Vector3(destinationTile.transform.position.x, transform.position.y, transform.position.z), 2.5f *Time.deltaTime);
 					}
 				}
 

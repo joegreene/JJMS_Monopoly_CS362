@@ -48,13 +48,14 @@
   <ItemGroup>
      <Compile Include="Assets\GUIManager.cs" />
      <Compile Include="Assets\GUIText.cs" />
-     <Compile Include="Assets\Scripts\Card.cs" />
+     <Compile Include="Assets\PlayerGroup.cs" />
      <Compile Include="Assets\Scripts\GUI.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
      <Compile Include="Assets\Scripts\MoveToActive.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SmoothRotate.cs" />
+     <Compile Include="Assets\Scripts\Tile Scripts\Card.cs" />
      <Compile Include="Assets\Scripts\Tile Scripts\ChanceTile.cs" />
      <Compile Include="Assets\Scripts\Tile Scripts\CommunityChestTile.cs" />
      <Compile Include="Assets\Scripts\Tile Scripts\FreeParkingTile.cs" />

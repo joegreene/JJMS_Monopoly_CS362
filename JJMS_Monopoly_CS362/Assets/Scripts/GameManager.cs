@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
 	public Vector3 startPosition;
 	public int currentCameraAngle;
 
+
+
 	public Card eventCards; 
 	public Player activePlayer;
 
@@ -44,14 +46,23 @@ public class GameManager : MonoBehaviour {
 
 
 		Player tempPlayer = ((GameObject)Instantiate (playerPieces[players.Count], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		tempPlayer.name = "Josh";
+		players.Add (tempPlayer);
+
+		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		tempPlayer.name = "Sally";
 		players.Add (tempPlayer);
 
 		activePlayer = players [0];
 
+
+
+	
+
 	}
 	void Start()
 	{
-
+		GUIManager.instance.setLeaderBoard ();
 
 	}
 
@@ -103,6 +114,8 @@ public class GameManager : MonoBehaviour {
 		currentIndex %= players.Count;
 		activePlayer = getCurrentPlayer ();
 		GUIManager.instance.rollDice.interactable = true;
+
+	
 		//activePlayer.isTakingTurn = true;
 
 	}

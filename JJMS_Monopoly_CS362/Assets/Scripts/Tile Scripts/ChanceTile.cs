@@ -20,7 +20,8 @@ public class ChanceTile : GameTile {
 		base.PlayerLanded (p);
 		GUIManager.instance.rollDice.interactable = true;
 		GUIManager.instance.displayChancePanel = true;
-		GameManager.instance.eventCards.getRandomChance ();
+		string temp = GameManager.instance.eventCards.ChanceCards(p);
+		GUIManager.instance.updateChancePanel (temp,true);
 	
 	}
 }

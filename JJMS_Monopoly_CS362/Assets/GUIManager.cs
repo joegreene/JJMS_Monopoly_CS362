@@ -10,6 +10,12 @@ public class GUIManager : MonoBehaviour {
 	public Image rentPanel;
 	public Image chancePanel;
 
+	public Transform playerFitter;
+	public Image playerPanel;
+
+	public PlayerGroup playerGroup;
+
+
 	public Text purchasePrompt;
 	public Text payRentPrompt;
 	public Text purchaseHousePrompt;
@@ -32,7 +38,10 @@ public class GUIManager : MonoBehaviour {
 
 	public static GUIManager instance;
 
-
+	void Awake()
+	{
+		instance = this;
+	}
 
 
 	// Use this for initialization
@@ -54,10 +63,9 @@ public class GUIManager : MonoBehaviour {
 		displayChancePanel = false;
 		chancePanel.rectTransform.anchoredPosition = Vector2.zero;
 		chancePanel.rectTransform.localScale = Vector2.zero;
+		
 
 
-
-		instance = this;
 
 	}
 		
@@ -214,6 +222,18 @@ public class GUIManager : MonoBehaviour {
 		}
 
 	}
+	public void updateChancePanel(string chanceMessage, bool isChance)
+	{
+		if(isChance)
+		{
+			chanceText.text = "CHANCE CARD!\n";
+		}
+		else
+		{
+			chanceText.text ="COMMUNITY CHEST!\n";
+		}
+		chanceText.text += chanceMessage;
+	}
 
 	public void purchaseHouseButtonAction()
 	{
@@ -231,5 +251,15 @@ public class GUIManager : MonoBehaviour {
 	{
 		displayChancePanel = false;
 		rollDice.interactable = true;
+	}
+
+	public void setLeaderBoard ()
+	{
+		foreach (Player player in GameManager.instance.players) {
+			PlayerGroup temp = (PlayerGroup)Instantiate (playerGroup, playerFitter.position, playerFitter.rotation);
+			temp.transform.SetParent (playerFitter, false);
+			temp.transform.localScale = Vector3.one;
+			temp.init (player);
+		}
 	}
 }

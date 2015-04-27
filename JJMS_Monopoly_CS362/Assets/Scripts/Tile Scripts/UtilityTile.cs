@@ -22,7 +22,7 @@ public class UtilityTile : PropertyTile {
 	public override void PlayerLanded(Player p)
 	{	
 		base.PlayerLanded (p);
-		if (owner.GetPlayerName() == null)                   
+		if (owner == null)                   
 		{
 			//Option to purchase property
 			
