@@ -19,6 +19,7 @@ public class RailroadTile : PropertyTile {
 	
 	public override void PlayerLanded(Player p)
 	{	
+		base.PlayerLanded (p);
 		if (owner == null)                   
 		{
 			//Option to purchase property
@@ -38,7 +39,8 @@ public class RailroadTile : PropertyTile {
 		else
 		{
 			//Player must pay rent to owner
-			
+			GUIManager.instance.displayRentPanel = true;
+			GUIManager.instance.updateRentPanel(this, this.owner, p);
 			int costToPlayer = CalculateRent();
 			p.DecreaseCashAmount(costToPlayer);
 			owner.IncreaseCashAmount(costToPlayer);
@@ -49,7 +51,7 @@ public class RailroadTile : PropertyTile {
 	 * Function to calculate rent (not sure if need reference or pass by-value is fine)
 	 * http://en.wikibooks.org/wiki/Monopoly/Official_Rules#Properties.2C_Rents.2C_and_Construction
 	 */
-	protected override int CalculateRent()
+	public override int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
 		int railroadTilesOwned = 1;

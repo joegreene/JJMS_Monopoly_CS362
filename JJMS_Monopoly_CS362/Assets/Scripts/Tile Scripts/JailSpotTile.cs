@@ -16,6 +16,7 @@ public class JailSpotTile : GameTile
 	//make sure dice roll is ONLY checked when player has sat on position for awhile
 	public override void PlayerLanded(Player p)
 	{
+		base.PlayerLanded (p);
 		//if (player.HasCard(get_out_of_jail)
 		//ask if player wants to use card to get out (or force them to use it)
 		//else if (player's dice roll is doubles)

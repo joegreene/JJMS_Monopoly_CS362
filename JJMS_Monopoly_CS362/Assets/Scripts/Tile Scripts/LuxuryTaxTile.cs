@@ -15,7 +15,9 @@ public class LuxuryTaxTile : GameTile {
 
 	public override void PlayerLanded(Player p)
 	{
+		base.PlayerLanded (p);
 		//deduct from player's cash amount by 10% of total property value
 		//p.DecreaseCashAmount(.10*p.GetTotalWorth());
+		GUIManager.instance.rollDice.interactable = true;
 	}
 }

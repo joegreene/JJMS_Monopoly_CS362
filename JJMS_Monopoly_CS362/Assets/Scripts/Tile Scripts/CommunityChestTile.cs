@@ -15,6 +15,7 @@ public class CommunityChestTile : GameTile {
 
 	public override void PlayerLanded(Player p)
 	{
-
+		base.PlayerLanded (p);
+		GUIManager.instance.rollDice.interactable = true;
 	}
 }

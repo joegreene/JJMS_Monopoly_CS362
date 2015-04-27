@@ -33,6 +33,10 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+		if(cashAmount < 0)
+		{
+			GameManager.instance.players.Remove(this);
+		}
 		if(GameManager.instance.activePlayer == this)
 		{
 			Debug.Log ("IsMoving: " + isMoving + " IsTakingTurn: " + isTakingTurn);
@@ -50,16 +54,33 @@ public class Player : MonoBehaviour
 			}
 			if(isMoving)
 			{
-				transform.position = Vector3.MoveTowards(transform.position, destinationTile.transform.position, Time.deltaTime);
-				if(Vector3.Distance(transform.position,destinationTile.transform.position) <= 0.25f)
+				if(destinationTile.transform.position.x == GameManager.instance.gameBoard[0].transform.position.x || destinationTile.transform.position.x == GameManager.instance.gameBoard[10].transform.position.x)
 				{
+					transform.position = Vector3.MoveTowards(transform.position, new Vector3(destinationTile.transform.position.x, transform.position.y, transform.position.z), Time.deltaTime);
+
+					if(transform.position.x == destinationTile.transform.position.x)
+					{
+						transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, destinationTile.transform.position.z), Time.deltaTime);		
+					}
+				}
+				else
+				{
+					transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, destinationTile.transform.position.z), Time.deltaTime);		
+
+					if(transform.position.z == destinationTile.transform.position.z)
+					{
+						transform.position = Vector3.MoveTowards(transform.position, new Vector3(destinationTile.transform.position.x, transform.position.y, transform.position.z), Time.deltaTime);
+					}
+				}
+
+				if(Vector3.Distance(transform.position,destinationTile.transform.position) <= 0.25f)
+				{	
 					transform.position = destinationTile.transform.position;
 					isMoving = false;
 					destinationTile.PlayerLanded(this);
 
 				}
 			}
-
 		}
 	}
 

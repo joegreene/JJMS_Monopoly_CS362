@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
+
 		if(Input.GetKeyUp(KeyCode.Space))
 		{
 			if(!freeRoamMode)
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour {
 		else
 		{
 			shiftCamera();
+			Camera.main.transform.LookAt (getCurrentPlayer ().transform.position);
 		}
 	}
 	
@@ -100,7 +102,8 @@ public class GameManager : MonoBehaviour {
 		currentIndex += 1;
 		currentIndex %= players.Count;
 		activePlayer = getCurrentPlayer ();
-		activePlayer.isTakingTurn = true;
+		GUIManager.instance.rollDice.interactable = true;
+		//activePlayer.isTakingTurn = true;
 
 	}
 

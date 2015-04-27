@@ -21,6 +21,7 @@ public class UtilityTile : PropertyTile {
 	
 	public override void PlayerLanded(Player p)
 	{	
+		base.PlayerLanded (p);
 		if (owner.GetPlayerName() == null)                   
 		{
 			//Option to purchase property
@@ -40,7 +41,8 @@ public class UtilityTile : PropertyTile {
 		else
 		{
 			//Player must pay rent to owner
-			
+			GUIManager.instance.displayRentPanel = true;
+			GUIManager.instance.updateRentPanel(this, this.owner, p);
 			int costToPlayer = CalculateRent();
 			p.DecreaseCashAmount(costToPlayer);
 			owner.IncreaseCashAmount(costToPlayer);
@@ -48,7 +50,7 @@ public class UtilityTile : PropertyTile {
 	}
 	
 	//@TODO (check list of rent tables)
-	protected override int CalculateRent()
+	public override int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
 		int rent_due = 0;

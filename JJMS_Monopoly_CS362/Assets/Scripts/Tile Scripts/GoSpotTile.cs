@@ -15,8 +15,10 @@ public class GoSpotTile : GameTile {
 	
 	public override void PlayerLanded(Player p)
 	{
+		base.PlayerLanded (p);
 		//Call this only after players have looped around game board 
 		//(i.e. do not call on start of game, only afterwards)
 		p.IncreaseCashAmount(200);
+		GameManager.instance.nextTurn ();
 	}
 }

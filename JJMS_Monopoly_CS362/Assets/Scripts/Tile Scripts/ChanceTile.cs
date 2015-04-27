@@ -17,6 +17,10 @@ public class ChanceTile : GameTile {
 
 	public override void PlayerLanded(Player p)
 	{
-
+		base.PlayerLanded (p);
+		GUIManager.instance.rollDice.interactable = true;
+		GUIManager.instance.displayChancePanel = true;
+		GameManager.instance.eventCards.getRandomChance ();
+	
 	}
 }

@@ -15,6 +15,8 @@ public class FreeParkingTile : GameTile {
 
 	public override void PlayerLanded(Player p)
 	{
+		base.PlayerLanded (p);
+		GameManager.instance.nextTurn ();
 
 	}
 }

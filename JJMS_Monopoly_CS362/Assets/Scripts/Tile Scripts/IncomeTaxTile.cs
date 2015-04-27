@@ -15,7 +15,9 @@ public class IncomeTaxTile : GameTile {
 
 	public override void PlayerLanded(Player p)
 	{
+		base.PlayerLanded (p);
 		//deduct from player's cash amount by 200
 		p.DecreaseCashAmount(200);
+		GUIManager.instance.rollDice.interactable = true;
 	}
 }

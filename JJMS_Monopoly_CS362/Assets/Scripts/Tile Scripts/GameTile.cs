@@ -16,5 +16,8 @@ public abstract class GameTile : MonoBehaviour
 		//unsure if used
 	}
 
-	abstract public void PlayerLanded(Player p);
+	public virtual void PlayerLanded(Player p)
+	{
+		GameManager.instance.cameraShiftDestination = p.transform.position;
+	}
 }

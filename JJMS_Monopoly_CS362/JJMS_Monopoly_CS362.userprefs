@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MoveCamera.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tile Scripts\ChanceTile.cs">
     <Files>
-      <File FileName="Assets\Scripts\Tile Scripts\PropertyTile.cs" Line="97" Column="11" />
-      <File FileName="Assets\Scripts\Tile Scripts\RailroadTile.cs" Line="52" Column="11" />
-      <File FileName="Assets\Scripts\Tile Scripts\UtilityTile.cs" Line="51" Column="11" />
-      <File FileName="Assets\Scripts\MoveCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SmoothRotate.cs" Line="21" Column="3" />
+      <File FileName="Assets\GUIManager.cs" Line="231" Column="3" />
+      <File FileName="Assets\Scripts\Tile Scripts\ChanceTile.cs" Line="23" Column="54" />
+      <File FileName="Assets\Scripts\Card.cs" Line="97" Column="24" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="30" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
