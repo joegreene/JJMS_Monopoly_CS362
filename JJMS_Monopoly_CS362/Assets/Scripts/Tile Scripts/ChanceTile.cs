@@ -21,7 +21,7 @@ public class ChanceTile : GameTile {
 		GUIManager.instance.rollDice.interactable = true;
 		GUIManager.instance.displayChancePanel = true;
 		string temp = GameManager.instance.eventCards.ChanceCards(p);
-		GUIManager.instance.updateChancePanel (temp,true);
+		GUIManager.instance.updateChancePanel (temp,0);
 	
 	}
 }

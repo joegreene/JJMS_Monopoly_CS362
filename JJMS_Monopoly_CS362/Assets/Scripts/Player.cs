@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 				isTakingTurn = false;
 
 			}
-			if(isMoving)
+			if(isMoving && !GUIManager.instance.displayChancePanel && !GUIManager.instance.displayHousePanel && !GUIManager.instance.displayRentPanel && !GUIManager.instance.displayPurchasePanel)
 			{
 				if(destinationTile.transform.position.x == GameManager.instance.gameBoard[0].transform.position.x || destinationTile.transform.position.x == GameManager.instance.gameBoard[10].transform.position.x)
 				{
@@ -142,5 +142,15 @@ public class Player : MonoBehaviour
 	{
 		return Random.Range (2, 12);
 
+	}
+
+	public int getAllPropertyValues()
+	{
+		int total = 0;
+		foreach(PropertyTile pTile in propertiesOwned)
+		{
+			total += pTile.propertyCost;
+		}
+		return total;
 	}
 }

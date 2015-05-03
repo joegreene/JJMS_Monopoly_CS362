@@ -49,9 +49,9 @@ public class GameManager : MonoBehaviour {
 		tempPlayer.name = "Josh";
 		players.Add (tempPlayer);
 
-		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
-		tempPlayer.name = "Sally";
-		players.Add (tempPlayer);
+//		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+//		tempPlayer.name = "Sally";
+//		players.Add (tempPlayer);
 
 		activePlayer = players [0];
 
@@ -138,13 +138,14 @@ public class GameManager : MonoBehaviour {
 		if (Vector3.Distance (cameraShiftDestination, focusPoint.transform.position) > 0.1f)
 		{
 			cameraShifting = true;
-			transform.position += (cameraShiftDestination - focusPoint.transform.position).normalized * 7.0f * Time.deltaTime;
+			transform.position += (cameraShiftDestination - focusPoint.transform.position).normalized * 4.0f * Time.deltaTime;
 			if(Vector3.Distance (cameraShiftDestination, transform.position) <= 0.3f)
 			{
 				transform.position = cameraShiftDestination;
 				cameraShifting = false;
 			}
 		}
+
 		
 	}
 

@@ -79,6 +79,7 @@ public class Card : MonoBehaviour {
 		{
 
 			player.destinationTile = GameManager.instance.gameBoard[0];
+			player.currentTileIndex = 0;
 			player.isMoving = true;
 			player.cashAmount += 200;
 			return chancecard1;
@@ -88,6 +89,7 @@ public class Card : MonoBehaviour {
 		{
 
 			player.destinationTile = GameManager.instance.gameBoard[24];
+			player.currentTileIndex = 24;
 			player.isMoving = true;
 			return chancecard2;
 			//move player to Illinois Ave
@@ -98,12 +100,14 @@ public class Card : MonoBehaviour {
 			if(player.currentTileIndex > 28 || player.currentTileIndex < 13)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[12];
+				player.currentTileIndex = 12;
 				player.isMoving = true;
 
 			}
 			else 
 			{
 				player.destinationTile = GameManager.instance.gameBoard[28];
+				player.currentTileIndex = 28;
 				player.isMoving = true;
 
 			}
@@ -116,21 +120,25 @@ public class Card : MonoBehaviour {
 			if(player.currentTileIndex > 35 || player.currentTileIndex < 6)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[5];
+				player.currentTileIndex = 5;
 				player.isMoving = true;
 			}
 			else if(player.currentTileIndex > 5 && player.currentTileIndex < 16)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[15];
+				player.currentTileIndex = 15;
 				player.isMoving = true;
 			}
 			else if(player.currentTileIndex > 15 && player.currentTileIndex < 26)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[25];
+				player.currentTileIndex = 25;
 				player.isMoving = true;
 			}
 			else
 			{
 				player.destinationTile = GameManager.instance.gameBoard[35];
+				player.currentTileIndex = 35;
 				player.isMoving = true;
 			}
 			return chancecard4;
@@ -142,21 +150,26 @@ public class Card : MonoBehaviour {
 			if(player.currentTileIndex > 35 || player.currentTileIndex < 6)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[5];
+				player.currentTileIndex = 5;
 				player.isMoving = true;
 			}
 			else if(player.currentTileIndex > 5 && player.currentTileIndex < 16)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[15];
+				player.currentTileIndex = 15;
 				player.isMoving = true;
 			}
 			else if(player.currentTileIndex > 15 && player.currentTileIndex < 26)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[25];
+				player.currentTileIndex = 25;
 				player.isMoving = true;
 			}
 			else
 			{
 				player.destinationTile = GameManager.instance.gameBoard[35];
+				player.currentTileIndex = 35;
+
 				player.isMoving = true;
 			}
 			return chancecard5;
@@ -167,6 +180,7 @@ public class Card : MonoBehaviour {
 
 			//move player to St.Charles Place
 			player.destinationTile = GameManager.instance.gameBoard[11];
+			player.currentTileIndex = 11;
 			player.isMoving = true;
 			return cccard6;
 		}
@@ -187,6 +201,7 @@ public class Card : MonoBehaviour {
 		{
 			 
 			player.destinationTile = GameManager.instance.gameBoard[player.currentTileIndex - 3];
+			player.currentTileIndex -= 3;
 			player.isMoving = true;
 			return chancecard9;
 			//move player back 3 places
@@ -195,6 +210,7 @@ public class Card : MonoBehaviour {
 		{
 			 
 			player.destinationTile = GameManager.instance.gameBoard[10];
+			player.currentTileIndex = 10;
 			player.isMoving = true;
 			return chancecard10;
 			//move player to jail
@@ -217,6 +233,7 @@ public class Card : MonoBehaviour {
 		{
 			 
 			player.destinationTile = GameManager.instance.gameBoard[5];
+			player.currentTileIndex = 5;
 			player.isMoving = true;
 			return chancecard13;
 			//move player to Reading Railroad
@@ -225,6 +242,7 @@ public class Card : MonoBehaviour {
 		{
 
 			player.destinationTile = GameManager.instance.gameBoard[39];
+			player.currentTileIndex = 39;
 			player.isMoving = true;
 			return chancecard14;
 			//move player to Boardwalk
@@ -252,6 +270,7 @@ public class Card : MonoBehaviour {
 		{
 
 			player.destinationTile = GameManager.instance.gameBoard[0];
+			player.currentTileIndex = 0;
 			player.isMoving = true;
 			player.cashAmount += 200;
 			return cccard1;
@@ -288,6 +307,7 @@ public class Card : MonoBehaviour {
 		{
 			  
 			player.destinationTile = GameManager.instance.gameBoard[10];
+			player.currentTileIndex = 10;
 			player.isMoving = true;
 			return cccard6;
 			//move player - Go to jail

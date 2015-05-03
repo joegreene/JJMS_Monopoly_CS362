@@ -222,22 +222,63 @@ public class GUIManager : MonoBehaviour {
 		}
 
 	}
-	public void updateChancePanel(string chanceMessage, bool isChance)
+	public void updateChancePanel(string chanceMessage, int eventIndex)
 	{
-		if(isChance)
+		switch (eventIndex)
 		{
-			chanceText.text = "CHANCE CARD!\n";
+			case 0:
+			{
+				chanceText.text = "CHANCE CARD!\n";
+				chanceText.text += chanceMessage;
+				break;
+			}
+			case 1:
+			{
+				chanceText.text ="COMMUNITY CHEST!\n";
+				chanceText.text += chanceMessage;
+				break;
+			}
+			case 2:
+			{
+				chanceText.text = chanceMessage;
+				break;
+			}
+			case 3:
+			{
+				chanceText.text = chanceMessage;
+				break;
+			}
+			case 4:
+			{
+				chanceText.text = chanceMessage;
+				break;
+			}
+			default:
+			{
+				break;
+			}
 		}
-		else
-		{
-			chanceText.text ="COMMUNITY CHEST!\n";
-		}
-		chanceText.text += chanceMessage;
+
 	}
 
 	public void purchaseHouseButtonAction()
 	{
-		//do shit
+
+		Player tempPlayer = GameManager.instance.activePlayer;
+		PropertyTile tempTile = (PropertyTile)GameManager.instance.gameBoard [tempPlayer.currentTileIndex];
+		if(tempPlayer.cashAmount >= tempTile.propertyCost)
+		{
+			if(tempTile.numHouses < 4)
+			{
+				tempPlayer.DecreaseCashAmount(tempTile.houseCost);
+				tempTile.numHouses += 1;
+			}
+			else
+			{
+				tempPlayer.DecreaseCashAmount(tempTile.houseCost * 5);
+				tempTile.numHouses += 1;
+			}
+		}
 		displayHousePanel = false;
 		rollDice.interactable = true;
 	}

@@ -20,7 +20,7 @@ public class CommunityChestTile : GameTile {
 		GUIManager.instance.rollDice.interactable = true;
 		GUIManager.instance.displayChancePanel = true;
 		string temp = GameManager.instance.eventCards.CommunityChestCards(p);
-		GUIManager.instance.updateChancePanel (temp,false);
+		GUIManager.instance.updateChancePanel (temp,1);
 			
 
 	}

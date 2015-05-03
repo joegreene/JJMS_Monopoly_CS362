@@ -17,6 +17,8 @@ public class IncomeTaxTile : GameTile {
 	{
 		base.PlayerLanded (p);
 		//deduct from player's cash amount by 200
+		GUIManager.instance.displayChancePanel = true;
+		GUIManager.instance.updateChancePanel ("Income Taxes\n Pay $200 to the bank!", 2);
 		p.DecreaseCashAmount(200);
 		GUIManager.instance.rollDice.interactable = true;
 	}
