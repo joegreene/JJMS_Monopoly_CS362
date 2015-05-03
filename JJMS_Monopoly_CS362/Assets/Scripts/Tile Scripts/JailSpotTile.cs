@@ -18,6 +18,7 @@ public class JailSpotTile : GameTile
 	{
 		base.PlayerLanded (p);
 		GUIManager.instance.rollDice.interactable = true;
+		GameManager.instance.nextTurn();
 
 		//if (player.HasCard(get_out_of_jail)
 		//ask if player wants to use card to get out (or force them to use it)

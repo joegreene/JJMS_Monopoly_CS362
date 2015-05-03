@@ -8,18 +8,18 @@ using System.Text;
 
 public class Player : MonoBehaviour
 {
-	private string playerName; // Players name will default to Player 1,2,3,.... or, n amount of playhers
+	public string playerName; // Players name will default to Player 1,2,3,.... or, n amount of playhers
 	// DO YOU WANT TO KEEP TRACK OF DEMONINATION OF BILLS I.E. $1, $5, $10, ...
 	// if so...check out cashAmountTwo;
 	public int cashAmount; // Amount of money in the player's bank
 	public GameObject token; // The token peice that the player has chosen to represent the player on the board
-	public List<PropertyTile>
-				propertiesOwned = new List<PropertyTile> ();
+	public List<PropertyTile> propertiesOwned = new List<PropertyTile> ();
 	public int currentTileIndex;
 	public GameTile currentTile;
 	public bool isTakingTurn;
 	public bool isMoving;
 	public GameTile destinationTile;
+	public bool inJail;
 
 	void Start()
 	{
@@ -36,22 +36,12 @@ public class Player : MonoBehaviour
 		if(cashAmount < 0)
 		{
 			GameManager.instance.players.Remove(this);
+			GUIManager.instance.displayChancePanel = true;
+			GUIManager.instance.updateChancePanel(this.playerName + " has gone bankrupt! Better luck next time!", 5);
 		}
 		if(GameManager.instance.activePlayer == this)
 		{
-			Debug.Log ("IsMoving: " + isMoving + " IsTakingTurn: " + isTakingTurn);
-			if(isTakingTurn)
-			{
-				int diceRoll = rollDice ();
-				destinationTile = GameManager.instance.gameBoard[(currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count];
-				
-				
-				currentTileIndex += diceRoll % GameManager.instance.gameBoard.Count;
-
-				isMoving = true;
-				isTakingTurn = false;
-
-			}
+			
 			if(isMoving && !GUIManager.instance.displayChancePanel && !GUIManager.instance.displayHousePanel && !GUIManager.instance.displayRentPanel && !GUIManager.instance.displayPurchasePanel)
 			{
 				if(destinationTile.transform.position.x == GameManager.instance.gameBoard[0].transform.position.x || destinationTile.transform.position.x == GameManager.instance.gameBoard[10].transform.position.x)
@@ -152,5 +142,19 @@ public class Player : MonoBehaviour
 			total += pTile.propertyCost;
 		}
 		return total;
+	}
+	
+	public void takeTurn()
+	{
+		int diceRoll = rollDice();
+		if(diceRoll + currentTileIndex > 40)
+		{
+			IncreaseCashAmount(200);
+		}
+		destinationTile = GameManager.instance.gameBoard[(currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count];
+		currentTileIndex += diceRoll % GameManager.instance.gameBoard.Count;
+		isMoving = true;
+		
+		GameManager.instance.cameraShiftDestination = GameManager.instance.gameBoard[currentTileIndex].transform.position;
 	}
 }

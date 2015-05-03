@@ -82,6 +82,7 @@ public class Card : MonoBehaviour {
 			player.currentTileIndex = 0;
 			player.isMoving = true;
 			player.cashAmount += 200;
+			GameManager.instance.chanceAction = true;
 			return chancecard1;
 			//move player to GO
 		}
@@ -91,6 +92,7 @@ public class Card : MonoBehaviour {
 			player.destinationTile = GameManager.instance.gameBoard[24];
 			player.currentTileIndex = 24;
 			player.isMoving = true;
+			GameManager.instance.chanceAction = true;
 			return chancecard2;
 			//move player to Illinois Ave
 		}
@@ -102,6 +104,7 @@ public class Card : MonoBehaviour {
 				player.destinationTile = GameManager.instance.gameBoard[12];
 				player.currentTileIndex = 12;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 
 			}
 			else 
@@ -109,6 +112,7 @@ public class Card : MonoBehaviour {
 				player.destinationTile = GameManager.instance.gameBoard[28];
 				player.currentTileIndex = 28;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 
 			}
 			return chancecard3;
@@ -122,24 +126,28 @@ public class Card : MonoBehaviour {
 				player.destinationTile = GameManager.instance.gameBoard[5];
 				player.currentTileIndex = 5;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			else if(player.currentTileIndex > 5 && player.currentTileIndex < 16)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[15];
 				player.currentTileIndex = 15;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			else if(player.currentTileIndex > 15 && player.currentTileIndex < 26)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[25];
 				player.currentTileIndex = 25;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			else
 			{
 				player.destinationTile = GameManager.instance.gameBoard[35];
 				player.currentTileIndex = 35;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			return chancecard4;
 			//move player to nearest Railroad
@@ -152,24 +160,27 @@ public class Card : MonoBehaviour {
 				player.destinationTile = GameManager.instance.gameBoard[5];
 				player.currentTileIndex = 5;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			else if(player.currentTileIndex > 5 && player.currentTileIndex < 16)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[15];
 				player.currentTileIndex = 15;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			else if(player.currentTileIndex > 15 && player.currentTileIndex < 26)
 			{
 				player.destinationTile = GameManager.instance.gameBoard[25];
 				player.currentTileIndex = 25;
 				player.isMoving = true;
+				GameManager.instance.chanceAction = true;
 			}
 			else
 			{
 				player.destinationTile = GameManager.instance.gameBoard[35];
 				player.currentTileIndex = 35;
-
+				GameManager.instance.chanceAction = true;
 				player.isMoving = true;
 			}
 			return chancecard5;
@@ -182,12 +193,14 @@ public class Card : MonoBehaviour {
 			player.destinationTile = GameManager.instance.gameBoard[11];
 			player.currentTileIndex = 11;
 			player.isMoving = true;
+			GameManager.instance.chanceAction = true;
 			return cccard6;
 		}
 		else if (randomChance == 7) 
 		{
 
 			player.cashAmount += 50;
+			GameManager.instance.chanceAction = false;
 			return chancecard7;
 			//money - receive $50
 		}
@@ -203,6 +216,7 @@ public class Card : MonoBehaviour {
 			player.destinationTile = GameManager.instance.gameBoard[player.currentTileIndex - 3];
 			player.currentTileIndex -= 3;
 			player.isMoving = true;
+			GameManager.instance.chanceAction = true;
 			return chancecard9;
 			//move player back 3 places
 		}
@@ -210,7 +224,9 @@ public class Card : MonoBehaviour {
 		{
 			 
 			player.destinationTile = GameManager.instance.gameBoard[10];
+			GameManager.instance.chanceAction = true;
 			player.currentTileIndex = 10;
+			player.inJail = true;
 			player.isMoving = true;
 			return chancecard10;
 			//move player to jail
@@ -220,12 +236,30 @@ public class Card : MonoBehaviour {
 
 			//need to go through a for loop to see how many properties each player owns?
 			//money - each house pay $25, for each hotel pay $100
+			
+			GameManager.instance.chanceAction = false;
+			
+			int total = 0;
+			foreach(PropertyTile p in player.propertiesOwned)
+			{
+				if(p.numHouses > 0 && p.numHouses <5)
+				{	
+					total += p.numHouses * 25;
+				}
+				else if(p.numHouses == 5)
+				{
+					total += 10;
+				}
+			}
+			player.DecreaseCashAmount(total);
+			
 			return chancecard11;
 		}
 		else if (randomChance == 12) 
 		{
 			 
 			player.cashAmount -= 15;
+			GameManager.instance.chanceAction = false;
 			return chancecard12;
 			//money - pay $15
 		}
@@ -235,6 +269,7 @@ public class Card : MonoBehaviour {
 			player.destinationTile = GameManager.instance.gameBoard[5];
 			player.currentTileIndex = 5;
 			player.isMoving = true;
+			GameManager.instance.chanceAction = true;
 			return chancecard13;
 			//move player to Reading Railroad
 		}
@@ -244,11 +279,13 @@ public class Card : MonoBehaviour {
 			player.destinationTile = GameManager.instance.gameBoard[39];
 			player.currentTileIndex = 39;
 			player.isMoving = true;
+			GameManager.instance.chanceAction = true;
 			return chancecard14;
 			//move player to Boardwalk
 		}
 		else if (randomChance == 15) 
 		{
+			GameManager.instance.chanceAction = false;
 			return chancecard15;
 			//money - pay each player $50
 		}
@@ -256,6 +293,7 @@ public class Card : MonoBehaviour {
 		{
 
 			player.cashAmount += 150;
+			GameManager.instance.chanceAction = false;
 			return chancecard16;
 			//money - collect $150
 		}
@@ -280,6 +318,7 @@ public class Card : MonoBehaviour {
 		{
 
 			player.cashAmount += 200;
+			GameManager.instance.chanceAction = false;
 			return cccard2;
 			//money - collect $200
 		}
@@ -287,6 +326,7 @@ public class Card : MonoBehaviour {
 		{
 			 
 			player.cashAmount -= 50;
+			GameManager.instance.chanceAction = false;
 			return cccard3;
 			//money - Pay $50
 		}
@@ -294,12 +334,13 @@ public class Card : MonoBehaviour {
 		{
 			  
 			player.cashAmount += 50;
+			GameManager.instance.chanceAction = false;
 			return cccard4;
 			//money - collect $50
 		}
 		else if (randomCC == 5) 
 		{
-			  
+			GameManager.instance.chanceAction = false;
 			return cccard5;
 			//?? get out of jail free card
 		}
@@ -307,75 +348,97 @@ public class Card : MonoBehaviour {
 		{
 			  
 			player.destinationTile = GameManager.instance.gameBoard[10];
+			GameManager.instance.chanceAction = true;
 			player.currentTileIndex = 10;
 			player.isMoving = true;
 			return cccard6;
 			//move player - Go to jail
 		}
 		else if (randomCC == 7) 
-		{
-			  
+		{	
+			GameManager.instance.chanceAction = false;
+			foreach(Player p in GameManager.instance.players)
+			{
+				if(p != GameManager.instance.activePlayer)
+				{
+					p.DecreaseCashAmount(50);
+					GameManager.instance.activePlayer.IncreaseCashAmount(50);
+				}
+			}
 			return cccard7;
 			//money - collect $50 from every player
 		}
 		else if (randomCC == 8) 
 		{
-			 
+			GameManager.instance.chanceAction = false;
 			player.cashAmount += 100;
 			return cccard1;
 			//money - collect $100
 		}
 		else if (randomCC == 9) 
 		{
-			 
+			GameManager.instance.chanceAction = false;
 			player.cashAmount += 20;
 			return cccard9;
 			//money - collect $20
 		}
 		else if (randomCC == 10) 
 		{
-			 
+			GameManager.instance.chanceAction = false;
 			player.cashAmount += 25;
 			return cccard10;
 			//money - collect $25
 		}
 		else if (randomCC == 11) 
 		{
-			 
+			GameManager.instance.chanceAction = false;
 			player.cashAmount += 100;
 			return cccard11;
 			//money - collect $100
 		}
 		else if (randomCC == 12) 
 		{
-			 
+			GameManager.instance.chanceAction = false;
 			player.cashAmount -= 100;
 			return cccard12;
 			//money - pay $100
 		}
 		else if (randomCC == 13) 
 		{
-			 
+			GameManager.instance.chanceAction = false;
 			player.cashAmount -= 150;
 			return cccard13;
 			//money - pay $150
 		}
 		else if (randomCC == 14) 
 		{
-
+			GameManager.instance.chanceAction = false;
+			int total = 0;
+			foreach(PropertyTile p in player.propertiesOwned)
+			{
+				if(p.numHouses > 0 && p.numHouses <5)
+				{	
+					total += p.numHouses * 40;
+				}
+				else if(p.numHouses == 5)
+				{
+					total += 115;
+				}
+			}
+			player.DecreaseCashAmount(total);
 			return cccard14;
 			//money - Pay $40 per house and $115 per hotel
 		}
 		else if (randomCC == 15) 
 		{
-			  
+			GameManager.instance.chanceAction = false;
 			player.cashAmount += 10;
 			return cccard15;
 			//money - collect $10
 		}
 		else if (randomCC == 16) 
 		{
-			  
+			GameManager.instance.chanceAction = false;
 			player.cashAmount += 100;
 			return cccard16;
 			//money - collect $100

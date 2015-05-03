@@ -18,10 +18,14 @@ public class SmoothRotate : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-
-		Quaternion newRotation = Quaternion.AngleAxis (angle, Vector3.up);
-		transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, speed);
-		if(Mathf.Abs(transform.rotation.eulerAngles.x - newRotation.eulerAngles.x) <= 2.5f && Mathf.Abs(transform.rotation.eulerAngles.y - newRotation.eulerAngles.y) <= 5 && Mathf.Abs(transform.rotation.eulerAngles.z - newRotation.eulerAngles.z) <= 5)
+		Vector3 relativePosition = GameManager.instance.getCurrentPlayer().transform.position - transform.position;
+		//Quaternion rotation = Quaternion.LookRotation(relativePosition);
+		Quaternion rotation = Quaternion.AngleAxis (angle, Vector3.up);
+		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 3f*Time.deltaTime);
+		
+//		Quaternion rotation = Quaternion.AngleAxis (angle, Vector3.up);
+//		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, speed);
+		if(Mathf.Abs(transform.rotation.eulerAngles.x - rotation.eulerAngles.x) <= 2.5f && Mathf.Abs(transform.rotation.eulerAngles.y - rotation.eulerAngles.y) <= 5 && Mathf.Abs(transform.rotation.eulerAngles.z - rotation.eulerAngles.z) <= 5)
 		{
 			GameManager.instance.cameraRotating = false;
 		}

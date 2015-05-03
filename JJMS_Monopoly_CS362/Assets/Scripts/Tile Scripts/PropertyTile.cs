@@ -77,8 +77,12 @@ public class PropertyTile : GameTile {
 			int costToPlayer = CalculateRent();
 			p.DecreaseCashAmount(costToPlayer);
 			owner.IncreaseCashAmount(costToPlayer);
+		
+			
 		}
 	}
+	
+	
 	
 	int GetBaseRentAmount()
 	{

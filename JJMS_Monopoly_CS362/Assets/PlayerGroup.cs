@@ -29,9 +29,9 @@ public class PlayerGroup : MonoBehaviour {
 	public void init(Player player)
 	{
 		myPlayer = player;
-		playerName.text = player.name;
+		playerName.text = player.playerName;
 		playerScore.text = player.cashAmount.ToString();
-		playerNumber.text = GameManager.instance.players.FindIndex ((Player obj) => obj == player).ToString();
+		playerNumber.text = (GameManager.instance.players.FindIndex ((Player obj) => obj == player)+1).ToString();
 
 	}
 }

@@ -144,12 +144,15 @@ public class GUIManager : MonoBehaviour {
 		{
 			tempPlayer.AddPropertyTile (tempTile);
 			tempPlayer.DecreaseCashAmount(tempTile.propertyCost);
+			tempTile.owner = tempPlayer;
 		}
 		else
 		{
 			Debug.Log ("Cant afford this!");
 		}
+		GameManager.instance.nextTurn ();
 		rollDice.interactable = true;
+		
 		
 
 
@@ -158,6 +161,7 @@ public class GUIManager : MonoBehaviour {
 	public void confirmRentAction()
 	{
 		displayRentPanel = false;
+		GameManager.instance.nextTurn();
 		rollDice.interactable = true;
 
 	}
@@ -165,12 +169,15 @@ public class GUIManager : MonoBehaviour {
 	public void denyButtonAction()
 	{
 		displayPurchasePanel = false;
+		GameManager.instance.nextTurn();
 		rollDice.interactable = true;
 	}
 
 	public void rollDiceAction()
 	{
 		GameManager.instance.activePlayer.isTakingTurn = true;
+		GameManager.instance.activePlayer.takeTurn();
+		
 		rollDice.interactable = false;
 		//GameManager.instance.cameraShiftDestination = getCurrentPlayer ().transform.position;
 	}
@@ -182,7 +189,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void updateRentPanel(PropertyTile pTile, Player owner, Player landed)
 	{
-		purchasePrompt.text = landed.GetPlayerName ()+ " landed on a property tile owned by " + owner.GetPlayerName() + " You must pay $" + pTile.CalculateRent()+ " in rent!";
+		payRentPrompt.text = landed.GetPlayerName ()+ " landed on a property tile owned by " + owner.GetPlayerName() + " You must pay $" + pTile.CalculateRent()+ " in rent!";
 	}
 	public void updateHousePanel(PropertyTile pTile, Player player)
 	{
@@ -253,6 +260,17 @@ public class GUIManager : MonoBehaviour {
 				chanceText.text = chanceMessage;
 				break;
 			}
+			case 5:
+			{
+				chanceText.text = chanceMessage;
+				break;	
+			}
+			case 6:
+			{
+				chanceText.text = chanceMessage;
+				GameManager.instance.chanceAction = false;
+				break;	
+			}
 			default:
 			{
 				break;
@@ -281,17 +299,23 @@ public class GUIManager : MonoBehaviour {
 		}
 		displayHousePanel = false;
 		rollDice.interactable = true;
+		GameManager.instance.nextTurn();
 	}
 	public void closeHouseButtonAction()
 	{
 		displayHousePanel = false;
 		rollDice.interactable = true;
+		GameManager.instance.nextTurn();
 	}
 
 	public void chanceButtonAction()
 	{
 		displayChancePanel = false;
 		rollDice.interactable = true;
+		if(!GameManager.instance.chanceAction)
+		{
+			GameManager.instance.nextTurn();
+		}
 	}
 
 	public void setLeaderBoard ()

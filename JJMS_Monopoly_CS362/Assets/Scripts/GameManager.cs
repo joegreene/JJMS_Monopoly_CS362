@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 	public List <GameObject> playerPieces;
 	public Vector3 startPosition;
 	public int currentCameraAngle;
+	public bool chanceAction;
 
 
 
@@ -36,24 +37,38 @@ public class GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-
+		
 		instance = this;
 		currentIndex = 0;
 
 		startPosition = gameBoard [0].transform.position;
+		transform.position = Vector3.zero;
 		cameraShiftDestination = Vector3.zero;
-		currentCameraAngle = 0;
+		currentCameraAngle = 45;
 
 
 		Player tempPlayer = ((GameObject)Instantiate (playerPieces[players.Count], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
-		tempPlayer.name = "Josh";
+		tempPlayer.playerName = "Josh";
 		players.Add (tempPlayer);
 
-//		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
-//		tempPlayer.name = "Sally";
-//		players.Add (tempPlayer);
+		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		tempPlayer.playerName = "Molly";
+		players.Add (tempPlayer);
+		
+		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		tempPlayer.playerName = "Joe";
+		players.Add (tempPlayer);
+		
+		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		tempPlayer.playerName = "Dr. Verma";
+		players.Add (tempPlayer);
+		
+		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
+		tempPlayer.playerName = "Stephan";
+		players.Add (tempPlayer);
 
 		activePlayer = players [0];
+		chanceAction = false;
 
 
 
@@ -104,16 +119,27 @@ public class GameManager : MonoBehaviour {
 		else
 		{
 			shiftCamera();
-			Camera.main.transform.LookAt (getCurrentPlayer ().transform.position);
+		
+			//Camera.main.transform.LookAt (getCurrentPlayer ().transform.position);
+		
+		
 		}
 	}
 	
 	public void nextTurn()
 	{
+		GameManager.instance.chanceAction = false;
 		currentIndex += 1;
 		currentIndex %= players.Count;
 		activePlayer = getCurrentPlayer ();
+		cameraShiftDestination = activePlayer.transform.position;
 		GUIManager.instance.rollDice.interactable = true;
+		if(activePlayer.inJail)
+		{
+			GUIManager.instance.displayChancePanel = true;
+			GUIManager.instance.updateChancePanel(activePlayer.playerName + " is in jail, you lose your turn!", 6);
+			activePlayer.inJail = false;
+		}
 
 	
 		//activePlayer.isTakingTurn = true;
@@ -138,11 +164,33 @@ public class GameManager : MonoBehaviour {
 		if (Vector3.Distance (cameraShiftDestination, focusPoint.transform.position) > 0.1f)
 		{
 			cameraShifting = true;
-			transform.position += (cameraShiftDestination - focusPoint.transform.position).normalized * 4.0f * Time.deltaTime;
-			if(Vector3.Distance (cameraShiftDestination, transform.position) <= 0.3f)
+			//transform.position += (cameraShiftDestination - focusPoint.transform.position).normalized * 2.0f * Time.deltaTime;
+			transform.position = Vector3.MoveTowards(transform.position, activePlayer.transform.position,5f* Time.deltaTime);
+			
+			if(Vector3.Distance (cameraShiftDestination, transform.position) <= 0.2f)
 			{
 				transform.position = cameraShiftDestination;
 				cameraShifting = false;
+			}
+		}
+		
+		if(!activePlayer.isMoving)
+		{
+			if(activePlayer.currentTileIndex/10 == 0)
+			{
+				GameManager.instance.GetComponent<SmoothRotate>().angle = -45;
+			}
+			else if(activePlayer.currentTileIndex/10 == 1)
+			{
+				GameManager.instance.GetComponent<SmoothRotate>().angle = 45;
+			}
+			else if(activePlayer.currentTileIndex/10 == 2)
+			{
+				GameManager.instance.GetComponent<SmoothRotate>().angle = 135;
+			}
+			else
+			{
+				GameManager.instance.GetComponent<SmoothRotate>().angle = 225;
 			}
 		}
 
@@ -183,6 +231,7 @@ public class GameManager : MonoBehaviour {
 		player.destinationTile = gameBoard [boardIndex];
 		player.isMoving = true;
 	}
+
 
 }
 
