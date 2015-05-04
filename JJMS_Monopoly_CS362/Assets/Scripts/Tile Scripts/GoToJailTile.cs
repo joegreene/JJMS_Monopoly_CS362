@@ -16,6 +16,7 @@ public class GoToJailTile : GameTile {
 	public override void PlayerLanded(Player p)
 	{
 		base.PlayerLanded (p);
+		GUIManager.instance.rollDice.interactable = false;
 		GUIManager.instance.displayChancePanel = true;
 		GUIManager.instance.updateChancePanel("Go to jail!\n Do NOT pass go, do NOT collect $200. You lose your next turn!", 4);
 		GameManager.instance.chanceAction = true;

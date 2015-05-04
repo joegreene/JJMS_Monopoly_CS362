@@ -19,6 +19,7 @@ public class GoSpotTile : GameTile {
 		//Call this only after players have looped around game board 
 		//(i.e. do not call on start of game, only afterwards)
 		p.IncreaseCashAmount(200);
+		GameManager.instance.chanceAction = false;
 		GameManager.instance.nextTurn ();
 	}
 }

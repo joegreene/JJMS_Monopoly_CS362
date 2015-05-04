@@ -32,6 +32,7 @@ public class PlayerGroup : MonoBehaviour {
 		playerName.text = player.playerName;
 		playerScore.text = player.cashAmount.ToString();
 		playerNumber.text = (GameManager.instance.players.FindIndex ((Player obj) => obj == player)+1).ToString();
+		playerNumber.color = player.playerColor;
 
 	}
 }

@@ -20,15 +20,21 @@ public class Player : MonoBehaviour
 	public bool isMoving;
 	public GameTile destinationTile;
 	public bool inJail;
+	public Color playerColor;
+	public ParticleSystem playerIdentifier;
 
 	void Start()
 	{
-		playerName = "Player 1";
 		currentTile = GameManager.instance.gameBoard [0];
 		currentTileIndex = 0;
 		cashAmount = 1500;
 		isTakingTurn = false;
 		destinationTile = currentTile;
+		renderer.material.color = playerColor;
+		//playerIdentifier = (ParticleSystem)Resources.Load("ownedParticle",typeof(ParticleSystem));
+		//playerIdentifier.startColor = playerColor;
+
+
 	}
 
 	void Update()
@@ -130,7 +136,8 @@ public class Player : MonoBehaviour
 	}
 	public int rollDice()
 	{
-		return Random.Range (2, 12);
+
+		return Random.Range (1, 7);
 
 	}
 
@@ -147,12 +154,17 @@ public class Player : MonoBehaviour
 	public void takeTurn()
 	{
 		int diceRoll = rollDice();
-		if(diceRoll + currentTileIndex > 40)
+		int diceRoll2 = rollDice ();
+		if(diceRoll + diceRoll2 + currentTileIndex > 39)
 		{
+			Debug.Log ("Passed go, collect 200");
 			IncreaseCashAmount(200);
 		}
-		destinationTile = GameManager.instance.gameBoard[(currentTileIndex + diceRoll) % GameManager.instance.gameBoard.Count];
-		currentTileIndex += diceRoll % GameManager.instance.gameBoard.Count;
+		destinationTile = GameManager.instance.gameBoard[(currentTileIndex + diceRoll + diceRoll2) % GameManager.instance.gameBoard.Count];
+		currentTileIndex += diceRoll + diceRoll2;
+		GUIManager.instance.rollText1.text = diceRoll.ToString();
+		GUIManager.instance.rollText2.text = diceRoll2.ToString ();
+		currentTileIndex %= GameManager.instance.gameBoard.Count;
 		isMoving = true;
 		
 		GameManager.instance.cameraShiftDestination = GameManager.instance.gameBoard[currentTileIndex].transform.position;

@@ -19,31 +19,31 @@ public class RailroadTile : PropertyTile {
 	
 	public override void PlayerLanded(Player p)
 	{	
-		base.PlayerLanded (p);
-		if (owner == null)                   
+		if (owner == null)                     //Option to purchase property
 		{
-			//Option to purchase property
-			
+			GUIManager.instance.displayPurchasePanel = true;
+			GUIManager.instance.updatePurchasePanel(this);
 			//whatever output to GUI goes here for asking user (leave as option on side or in a menu)
 			
 			//if player chooses to purchase, decrease cost from player, add property to player, 
-			//and set owner variable in this object to player name
+			//and set owner variable in this object to p
 			//p.DecreaseCashAmount(propertyCost);
 			//p.AddPropertyTile(this);
-			//this.owner = p.GetPlayerName();
+			//this.owner = p;
 		}
-		else if (owner == p) 
+		else if (owner == p)   //player is owner
 		{
-			//do nothing
+			GameManager.instance.nextTurn();
 		}
-		else
+		else                                                   //Player must pay rent to owner
 		{
-			//Player must pay rent to owner
 			GUIManager.instance.displayRentPanel = true;
 			GUIManager.instance.updateRentPanel(this, this.owner, p);
 			int costToPlayer = CalculateRent();
 			p.DecreaseCashAmount(costToPlayer);
 			owner.IncreaseCashAmount(costToPlayer);
+			
+			
 		}
 	}
 	

@@ -20,6 +20,8 @@ public class GUIManager : MonoBehaviour {
 	public Text payRentPrompt;
 	public Text purchaseHousePrompt;
 	public Text chanceText;
+	public Text rollText1;
+	public Text rollText2;
 
 	public Button purchaseConfirm;
 	public Button purchaseDeny;
@@ -140,16 +142,12 @@ public class GUIManager : MonoBehaviour {
 		displayPurchasePanel = false;
 		Player tempPlayer = GameManager.instance.activePlayer;
 		PropertyTile tempTile = (PropertyTile)GameManager.instance.gameBoard [tempPlayer.currentTileIndex];
-		if(tempPlayer.cashAmount >= tempTile.propertyCost)
-		{
-			tempPlayer.AddPropertyTile (tempTile);
-			tempPlayer.DecreaseCashAmount(tempTile.propertyCost);
-			tempTile.owner = tempPlayer;
-		}
-		else
-		{
-			Debug.Log ("Cant afford this!");
-		}
+		tempPlayer.AddPropertyTile (tempTile);
+		tempPlayer.DecreaseCashAmount(tempTile.propertyCost);
+		tempTile.owner = tempPlayer;
+		ParticleSystem temp = (ParticleSystem)Instantiate (tempPlayer.playerIdentifier, tempTile.transform.position + 0.02f * Vector3.up, Quaternion.Euler(-90.0f,0.0f,0.0f));
+		temp.startColor = tempPlayer.playerColor;
+
 		GameManager.instance.nextTurn ();
 		rollDice.interactable = true;
 		
@@ -184,7 +182,16 @@ public class GUIManager : MonoBehaviour {
 
 	public void updatePurchasePanel(PropertyTile pTile)
 	{
-		purchasePrompt.text = "Would you like to purchase: " + pTile.tileName + " for $" + pTile.propertyCost + "?";
+		if(GameManager.instance.activePlayer.cashAmount > pTile.propertyCost)
+		{
+			purchasePrompt.text = "Would you like to purchase: " + pTile.tileName + " for $" + pTile.propertyCost + "?";
+			purchaseConfirm.interactable = true;
+		}
+		else
+		{
+			purchasePrompt.text = "You do not have enough money to purchase this property...";
+			purchaseConfirm.interactable = false;
+		}
 	}
 
 	public void updateRentPanel(PropertyTile pTile, Player owner, Player landed)

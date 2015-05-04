@@ -222,7 +222,7 @@ public class Card : MonoBehaviour {
 		}
 		else if (randomChance == 10) 
 		{
-			 
+			GUIManager.instance.rollDice.interactable = false;
 			player.destinationTile = GameManager.instance.gameBoard[10];
 			GameManager.instance.chanceAction = true;
 			player.currentTileIndex = 10;

@@ -49,22 +49,27 @@ public class GameManager : MonoBehaviour {
 
 		Player tempPlayer = ((GameObject)Instantiate (playerPieces[players.Count], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		tempPlayer.playerName = "Josh";
+		tempPlayer.playerColor = Color.blue;
 		players.Add (tempPlayer);
 
 		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		tempPlayer.playerName = "Molly";
+		tempPlayer.playerColor = Color.magenta;
 		players.Add (tempPlayer);
 		
 		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		tempPlayer.playerName = "Joe";
+		tempPlayer.playerColor = Color.cyan;
 		players.Add (tempPlayer);
 		
 		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		tempPlayer.playerName = "Dr. Verma";
+		tempPlayer.playerColor = Color.yellow;
 		players.Add (tempPlayer);
 		
 		tempPlayer = ((GameObject)Instantiate (playerPieces[0], startPosition, Quaternion.Euler (new Vector3 ()))).GetComponent<Player>();
 		tempPlayer.playerName = "Stephan";
+		tempPlayer.playerColor = Color.red;
 		players.Add (tempPlayer);
 
 		activePlayer = players [0];
@@ -128,7 +133,9 @@ public class GameManager : MonoBehaviour {
 	
 	public void nextTurn()
 	{
-		GameManager.instance.chanceAction = false;
+		GUIManager.instance.rollText1.text = "---";
+		GUIManager.instance.rollText2.text = "---";
+		chanceAction = false;
 		currentIndex += 1;
 		currentIndex %= players.Count;
 		activePlayer = getCurrentPlayer ();
@@ -140,7 +147,6 @@ public class GameManager : MonoBehaviour {
 			GUIManager.instance.updateChancePanel(activePlayer.playerName + " is in jail, you lose your turn!", 6);
 			activePlayer.inJail = false;
 		}
-
 	
 		//activePlayer.isTakingTurn = true;
 

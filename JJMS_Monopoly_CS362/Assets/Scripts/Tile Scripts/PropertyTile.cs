@@ -17,11 +17,15 @@ public class PropertyTile : GameTile {
 	public int baseRentAmount;
 	public int houseCost;
 	public string colorType;      //not an actual color, rather color type
+	public GameObject houseModel;
+	public GameObject hotelModel;
 	
 	
 	// Use this for initialization; other values set up in unity
 	void Start () 
 	{
+		houseModel = (GameObject)Resources.Load ("houseModel", typeof (GameObject));
+		houseModel = (GameObject)Resources.Load ("hotelModel", typeof (GameObject));
 		//Look through game board and add same-color 
 		foreach(GameTile t in GameManager.instance.gameBoard)
 		{
@@ -96,21 +100,27 @@ public class PropertyTile : GameTile {
 	public virtual int CalculateRent()
 	{
 		//At start, player owns at least one of the associated properties (itself)
-		int rent_due = 0;
+		int rent_due = GetBaseRentAmount();
 		
 		//Check each associated property to see how much rent is due
 		//At the moment, calculate by adding all rents together.
-		foreach (PropertyTile property in associatedProperties)
+//			foreach (PropertyTile property in associatedProperties)
+//			{
+//				
+//				//NOTE: For now, rent is base amount 
+//				if(owner.OwnsProperty(property))
+//				{
+//					rent_due+=(property.baseRentAmount + (property.numHouses*10));
+//				}
+//			}
+//		
+//
+//			
+//			//do other rent calc here
+		if(numHouses > 0)
 		{
-			
-			//NOTE: For now, rent is base amount 
-			if(owner.OwnsProperty(property))
-			{
-				rent_due+=(property.baseRentAmount + (property.numHouses*10));
-			}
+			rent_due = rent_due * (5 * numHouses);
 		}
-		
-		//do other rent calc here
 
 		return rent_due;
 	}

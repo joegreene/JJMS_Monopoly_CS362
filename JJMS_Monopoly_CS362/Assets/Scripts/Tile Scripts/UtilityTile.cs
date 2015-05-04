@@ -24,6 +24,8 @@ public class UtilityTile : PropertyTile {
 		base.PlayerLanded (p);
 		if (owner == null)                   
 		{
+			GUIManager.instance.displayPurchasePanel = true;
+			GUIManager.instance.updatePurchasePanel(this);
 			//Option to purchase property
 			
 			//whatever output to GUI goes here for asking user (leave as option on side or in a menu)
@@ -55,14 +57,14 @@ public class UtilityTile : PropertyTile {
 		//At start, player owns at least one of the associated properties (itself)
 		int rent_due = 0;
 
-		foreach (PropertyTile property in associatedProperties)
+		int randomRoll = Random.Range (2, 13);
+		if(associatedProperties[0].owner != null && associatedProperties[1].owner != null)
 		{
-			
-			//NOTE: For now, rent is base amount added all together
-			if(owner.OwnsProperty(property))
-			{
-				rent_due+=(property.baseRentAmount);
-			}
+			rent_due = randomRoll * 10;
+		}
+		else
+		{
+			rent_due = randomRoll * 4;
 		}
 		
 		//do other rent calc here
