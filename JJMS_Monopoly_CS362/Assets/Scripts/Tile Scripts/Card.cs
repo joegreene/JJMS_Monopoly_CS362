@@ -26,7 +26,7 @@ public class Card : MonoBehaviour {
 	public string cccard3 = "Doctor's Fee - Pay $50";
 	public string cccard4 = "Sale of Stock - Collect $50";
 	public string cccard5 = "Get out of jail free - Keep until needed";
-	public string cccard6 = "Go to jail - Do not pass GO, Do not collect $200";
+	public string cccard6 = "Advance to St. Charles Place! Collect $200 if you pass GO!";
 	public string cccard7 = "Grand Opera Night - Collect $50 from every player";
 	public string cccard8 = "Holiday Fund Matures - Collect $100";
 	public string cccard9 = "Income Tax Refund - Collect $20";
@@ -190,6 +190,10 @@ public class Card : MonoBehaviour {
 		{
 
 			//move player to St.Charles Place
+			if(player.currentTileIndex > 11)
+			{
+				player.IncreaseCashAmount(200);
+			}
 			player.destinationTile = GameManager.instance.gameBoard[11];
 			player.currentTileIndex = 11;
 			player.isMoving = true;

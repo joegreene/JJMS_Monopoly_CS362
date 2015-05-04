@@ -270,6 +270,7 @@ public class GUIManager : MonoBehaviour {
 			case 5:
 			{
 				chanceText.text = chanceMessage;
+				GameManager.instance.chanceAction = false;
 				break;	
 			}
 			case 6:
@@ -317,6 +318,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void chanceButtonAction()
 	{
+		Debug.Log ("Closing dat shit");
 		displayChancePanel = false;
 		rollDice.interactable = true;
 		if(!GameManager.instance.chanceAction)
@@ -334,4 +336,5 @@ public class GUIManager : MonoBehaviour {
 			temp.init (player);
 		}
 	}
+
 }

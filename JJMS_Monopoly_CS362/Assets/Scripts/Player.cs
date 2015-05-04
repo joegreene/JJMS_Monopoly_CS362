@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 			GameManager.instance.players.Remove(this);
 			GUIManager.instance.displayChancePanel = true;
 			GUIManager.instance.updateChancePanel(this.playerName + " has gone bankrupt! Better luck next time!", 5);
+			this.enabled = false;
 		}
 		if(GameManager.instance.activePlayer == this)
 		{
